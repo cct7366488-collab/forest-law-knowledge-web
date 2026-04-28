@@ -92,13 +92,11 @@ if (-not (Test-Path $ObsidianDir)) {
   Write-Host "  建立目錄：$ObsidianDir" -ForegroundColor Gray
 }
 
-# 鏡像所有專案根目錄的 .md → Obsidian（不含子目錄）
-# /MIR 會刪除目的端多餘的檔案
-$obsResult = robocopy $ProjectRoot $ObsidianDir *.md /LEV:1 /XF "MOC*.md" /R:1 /W:1 /NFL /NDL /NP /NJH /NJS
-
-# 但要保留我們手動建立的 MOC 索引檔（不刪），所以採用另一種策略：
-# 步驟：先列舉專案 .md，覆蓋複製；再清掉目的端對應的舊 .md（除了 MOC 與不存在於來源的）
-$srcMd = Get-ChildItem -Path $ProjectRoot -Filter "*.md" -File | Select-Object -ExpandProperty Name
+# 策略：只同步「教材內容」.md（檔名以兩位數字+底線開頭，例如 00_、01_、02_、04_）
+# 排除 README.md 等專案層級檔案；保留目的端的 MOC 索引檔
+$srcMd = Get-ChildItem -Path $ProjectRoot -Filter "*.md" -File `
+  | Where-Object { $_.Name -match '^\d{2}_' } `
+  | Select-Object -ExpandProperty Name
 foreach ($f in $srcMd) {
   Copy-Item -Path "$ProjectRoot\$f" -Destination $ObsidianDir -Force
   Write-Host "  ✓ 同步：$f" -ForegroundColor Gray
