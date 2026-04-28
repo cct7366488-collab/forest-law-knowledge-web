@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案例分析 · 林業政策與法規知識網</title>
+<link rel="stylesheet" href="assets/css/main.css?v=20260412">
+<link rel="stylesheet" href="assets/css/case-analysis.css?v=20260412c">
+</head>
+<body data-mode="student" class="ca-body">
+
+<header class="reader-topbar">
+  <div class="reader-topbar-left">
+    <a href="javascript:history.length>1?history.back():location.assign('index.html');" class="reader-back-btn">← 返回</a>
+    <a href="index.html" class="reader-home-btn">🏠 首頁</a>
+  </div>
+  <div class="reader-topbar-center"><span>⚖️ 林業案例分析器</span></div>
+  <div class="reader-topbar-right">
+    <button id="btn-print" class="reader-tool-btn" type="button" title="送到系統印表機列印">🖨 列印</button>
+    <button id="btn-savepdf" class="reader-tool-btn" type="button" title="下載為 PDF 檔案">💾 存為 PDF</button>
+  </div>
+</header>
+
+<main class="ca-main">
+  <section class="ca-hero">
+    <h1>⚖️ 案例分析(Legal Opinion Generator)</h1>
+    <p class="ca-lead">
+      輸入您實際面臨或課堂討論的森林法規案例,本站將自動比對
+      <strong>《森林法》</strong>、<strong>《保安林經營準則》</strong>、
+      <strong>《原住民族基本法》</strong>、<strong>《氣候變遷因應法》</strong> 等 34 部核心法規,
+      產出結構化的<strong>議題 → 適用法條 → 法律分析 → 結論建議</strong>。
+    </p>
+    <div class="ca-disclaimer-top">
+      ⚠️ 本分析器僅作為教學示範與初步研判用途,不構成正式法律意見。實務上請諮詢執業律師、林業技師或林業保育署各地分署。
+    </div>
+  </section>
+
+  <section class="ca-workspace">
+    <div class="ca-input-panel">
+      <h2>📝 輸入您的案件</h2>
+      <label for="case-input" class="ca-label">案件描述(越詳細越好,建議包含:地點、行為、對象、時間)</label>
+      <textarea
+        id="case-input"
+        class="ca-textarea"
+        rows="10"
+        placeholder="例如:我在花蓮銅門的自家私有林地(約 3 公頃),想申請獎勵造林 2.0,打算種植臺灣肖楠與牛樟。請問資格與獎勵金上限如何?此外,鄰地屬水源涵養保安林,整地時須注意哪些規定?"></textarea>
+      <div class="ca-buttons">
+        <button id="btn-analyze" class="ca-btn ca-btn-primary">⚖️ 開始分析</button>
+        <button id="btn-clear" class="ca-btn">🗑 清空</button>
+      </div>
+
+      <div class="ca-examples">
+        <h3>💡 案例範本(點擊載入)</h3>
+        <ul>
+          <li><button class="ca-example-btn" data-case="我的鄰居在國有林裡偷砍了一棵牛樟木,還把根挖出來準備販售。請問他會面臨什麼刑責?我該如何檢舉?">🌳 國有林內盜伐牛樟</button></li>
+          <li><button class="ca-example-btn" data-case="我想在嘉義阿里山鄉的部落傳統領域內,依原基法第 19 條採取林下的段木香菇與金線連作為部落祭典所需。請問申請流程為何?需要簽訂行政契約嗎?">🏹 原住民部落採取森林產物</button></li>
+          <li><button class="ca-example-btn" data-case="我家在南投的私有林地約 5 公頃,屬於水源涵養保安林,想申請限制採伐補償,同時執行獎勵造林 2.0。請問是否可以同時申請?堆疊獎勵金最高多少?">🌲 保安林地造林獎勵申請</button></li>
+          <li><button class="ca-example-btn" data-case="某科技公司想在苗栗山區租用國有林地 10 公頃,設置太陽光電設施並辦理森林碳匯專案。請問國有林地是否可作此用途?碳匯專案的申請要點為何?">☀️ 國有林地開發與碳匯</button></li>
+          <li><button class="ca-example-btn" data-case="我是臺中的林農,自有林地 600 公頃,從事混合林經營。請問是否依森林法第 18 條必須聘任林業技師?若要從事林下經濟種植臺灣山茶,有何規範?">👨‍🌾 大面積林地經營 + 林下經濟</button></li>
+          <li><button class="ca-example-btn" data-case="今年清明節我在阿里山森林遊樂區附近的農地燒金紙及除草,未料火勢失控延燒 2 公頃森林。請問我的刑事與民事責任為何?">🔥 清明燒草失火案</button></li>
+          <li><button class="ca-example-btn" data-case="都會區一棵約 150 年老樹(榕樹,胸徑超過 100 公分),因地方政府道路拓寬計畫將被移除。請問該樹是否受森林法樹木保護專章保障?民眾可否阻止?">🌳 都市老樹移除爭議</button></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ca-result-panel">
+      <h2>📊 分析結果</h2>
+      <div id="case-result" class="ca-result">
+        <div class="ca-placeholder">
+          <div class="ca-ph-icon">⚖️</div>
+          <p>輸入您的案件後,點擊「開始分析」按鈕,此區將顯示<br>
+            <strong>案件摘要 → 爭點識別 → 適用法條 → 法律分析 → 結論與建議</strong>。</p>
+          <p class="ca-ph-note">您也可以點擊左側的「案例範本」快速試用。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ca-kb-info">
+    <h3>📚 本分析器涵蓋之法規議題</h3>
+    <div class="ca-topic-grid">
+      <div class="ca-topic"><strong>盜伐與貴重木</strong><br><small>森林法 §50, §52</small></div>
+      <div class="ca-topic"><strong>保安林管制</strong><br><small>森林法 §22-31</small></div>
+      <div class="ca-topic"><strong>國有林地使用</strong><br><small>森林法 §7, §8</small></div>
+      <div class="ca-topic"><strong>獎勵造林 2.0</strong><br><small>森林法 §48、獎勵要點</small></div>
+      <div class="ca-topic"><strong>林下經濟</strong><br><small>容許使用 9 品項</small></div>
+      <div class="ca-topic"><strong>原住民採取權</strong><br><small>原基法 §19-22</small></div>
+      <div class="ca-topic"><strong>森林碳匯</strong><br><small>氣候法、AR-TMS0001</small></div>
+      <div class="ca-topic"><strong>樹木保護專章</strong><br><small>森林法 §71-72</small></div>
+      <div class="ca-topic"><strong>森林火災與引火</strong><br><small>森林法 §34, §53</small></div>
+      <div class="ca-topic"><strong>山坡地與水保</strong><br><small>水保法 §12, §32</small></div>
+      <div class="ca-topic"><strong>林業技師聘任</strong><br><small>森林法 §18(500 公頃)</small></div>
+      <div class="ca-topic"><strong>溫室氣體減量額度</strong><br><small>氣候法 §25</small></div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/js/case-analyzer.js?v=20260412"></script>
+<!-- html2pdf.js — 用於「存為 PDF」按鈕,純前端產生 PDF -->
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+<script>
+(function(){
+  var ta = document.getElementById('case-input');
+  var result = document.getElementById('case-result');
+  var btnAnalyze = document.getElementById('btn-analyze');
+  var btnClear = document.getElementById('btn-clear');
+
+  function runAnalyze() {
+    var text = ta.value;
+    if (!text || !text.trim()) {
+      result.innerHTML = '<div class="ca-error">⚠️ 請先輸入案件描述</div>';
+      return;
+    }
+    result.innerHTML = '<div class="ca-loading">🔍 分析中...請稍候</div>';
+    window.ForestCaseAnalyzer.analyze(text).then(function(r){
+      result.innerHTML = window.ForestCaseAnalyzer.render(r);
+      // 捲動到結果
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }).catch(function(e){
+      result.innerHTML = '<div class="ca-error">⚠️ 分析失敗:' + (e && e.message ? e.message : e) + '</div>';
+    });
+  }
+
+  btnAnalyze.addEventListener('click', runAnalyze);
+  btnClear.addEventListener('click', function(){
+    ta.value = '';
+    result.innerHTML = '<div class="ca-placeholder"><div class="ca-ph-icon">⚖️</div><p>已清空,請輸入新的案件。</p></div>';
+    ta.focus();
+  });
+
+  // 案例範本
+  var exBtns = document.querySelectorAll('.ca-example-btn');
+  for (var i = 0; i < exBtns.length; i++) {
+    exBtns[i].addEventListener('click', function(){
+      ta.value = this.getAttribute('data-case');
+      ta.focus();
+      runAnalyze();
+    });
+  }
+
+  // Ctrl+Enter 快捷鍵
+  ta.addEventListener('keydown', function(e){
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      runAnalyze();
+    }
+  });
+
+  // ==============================
+  // 列印 與 存為 PDF(分離的兩個按鈕)
+  // ==============================
+  //
+  // 策略:
+  //   A) 「🖨 列印」按鈕 → 建立一個隱藏 iframe,寫入報告內容,呼叫
+  //      iframe.contentWindow.print() 觸發系統列印對話框 → 使用者選印表機列印。
+  //      iframe 離屏但有實體 A4 尺寸,Chrome/Firefox/Safari 都可用。
+  //   B) 「💾 存為 PDF」按鈕 → 使用 html2pdf.js(CDN)將報告內容渲染為 PDF,
+  //      透過瀏覽器下載機制存到使用者電腦(瀏覽器若啟用「每次詢問下載位置」
+  //      就會跳出磁碟機位置選擇對話框)。
+  //
+  // 兩種方式都在使用者 gesture 內觸發,不會被 popup blocker 擋下。
+
+  var btnPrint   = document.getElementById('btn-print');
+  var btnSavePdf = document.getElementById('btn-savepdf');
+  var printFrame = null; // 單一 iframe 重複使用
+
+  function buildReportHTML() {
+    var hasResult = result.querySelector('.ca-block');
+    if (!hasResult) {
+      alert('⚠️ 請先輸入案件並點擊「開始分析」,取得分析結果後再列印或存 PDF。');
+      ta.focus();
+      return null;
+    }
+    var caseText = (ta.value || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    var now = new Date().toLocaleString('zh-TW');
+    return {
+      now: now,
+      paperHTML:
+        '<div class="pr-header">' +
+          '<h1>⚖️ 林業案例分析報告</h1>' +
+          '<div class="pr-meta">產生時間:' + now + ' · 來源:林業政策與法規知識網</div>' +
+        '</div>' +
+        '<div class="pr-input-box"><strong>📄 案件原文</strong>' + caseText + '</div>' +
+        (result.innerHTML || '') +
+        '<div class="pr-footer">本報告由林業政策與法規知識網案例分析器自動產生,僅供教學研究參考,不構成正式法律意見。</div>'
+    };
+  }
+
+  // 列印文件的自足 CSS
+  function buildPrintDocHTML(paperHTML, titleText) {
+    return [
+      '<!DOCTYPE html>',
+      '<html lang="zh-Hant"><head><meta charset="UTF-8">',
+      '<title>' + titleText + '</title>',
+      '<style>',
+      '@page { size: A4; margin: 18mm 16mm; }',
+      '* { box-sizing: border-box; }',
+      'body {',
+      '  font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;',
+      '  color: #222; line-height: 1.75; font-size: 11pt;',
+      '  margin: 0; padding: 0; background: #fff;',
+      '}',
+      '.pr-header { border-bottom: 3px double #1e3a2f; padding-bottom: 10px; margin-bottom: 18px; }',
+      '.pr-header h1 { margin: 0 0 6px; font-size: 18pt; color: #1e3a2f; }',
+      '.pr-header .pr-meta { font-size: 10pt; color: #666; }',
+      '.pr-input-box {',
+      '  background: #f5f5f0; border-left: 4px solid #e9c46a;',
+      '  padding: 12px 16px; margin-bottom: 18px; border-radius: 4px;',
+      '  font-size: 11pt; white-space: pre-wrap; word-wrap: break-word;',
+      '}',
+      '.pr-input-box strong { color: #1e3a2f; display: block; margin-bottom: 6px; }',
+      '.ca-block {',
+      '  border: 1px solid #bbb; padding: 14px 18px; margin: 0 0 14px;',
+      '  border-radius: 6px; page-break-inside: avoid;',
+      '}',
+      '.ca-block h3 {',
+      '  margin: 0 0 10px; font-size: 13pt; color: #1e3a2f;',
+      '  border-bottom: 2px solid #e9c46a; padding-bottom: 5px;',
+      '}',
+      '.ca-block h4 { margin: 12px 0 6px; font-size: 11pt; color: #2d5a3f; }',
+      '.ca-summary blockquote {',
+      '  background: #f0f0ea; border-left: 4px solid #1e3a2f;',
+      '  padding: 10px 14px; margin: 0; border-radius: 4px;',
+      '  white-space: pre-wrap; word-wrap: break-word;',
+      '}',
+      '.ca-meta { font-size: 9pt; color: #666; }',
+      '.ca-issue-list { padding-left: 20px; margin: 0; }',
+      '.ca-issue-list li { margin-bottom: 10px; }',
+      '.ca-unit-tag {',
+      '  display: inline-block; background: #e9c46a; color: #1e3a2f;',
+      '  padding: 1px 8px; border-radius: 10px; font-size: 9pt;',
+      '  font-weight: 700; margin-left: 4px;',
+      '}',
+      '.ca-provisions { list-style: none; padding: 0; margin: 0 0 10px; }',
+      '.ca-provisions li {',
+      '  background: #f8f7f0; padding: 8px 12px; margin-bottom: 6px;',
+      '  border-left: 3px solid #e9c46a; border-radius: 3px;',
+      '}',
+      '.ca-provisions li strong { display: block; margin-bottom: 3px; color: #1e3a2f; }',
+      '.ca-provisions li p { margin: 0; font-size: 10pt; }',
+      '.ca-analysis { background: #f8f7f0; padding: 8px 12px; border-radius: 3px; font-size: 11pt; }',
+      '.ca-conclusion { background: #e8f5e9; padding: 8px 12px; border-radius: 3px; border-left: 3px solid #2d6a4f; font-size: 11pt; }',
+      '.ca-hits { font-size: 9pt; color: #666; margin-top: 8px; }',
+      '.ca-tag { display: inline-block; background: #eee; color: #333; padding: 1px 6px; border-radius: 8px; margin-right: 4px; font-size: 9pt; }',
+      '.ca-further { font-size: 9pt; margin-top: 8px; padding: 6px 10px; background: #fff8e7; border-radius: 3px; }',
+      '.ca-disclaimer { margin-top: 12px; padding: 10px 14px; background: #fff4d6; border-left: 4px solid #e9c46a; border-radius: 3px; font-size: 9pt; }',
+      '.ca-final ul { padding-left: 20px; margin: 10px 0; }',
+      '.pr-footer { margin-top: 18px; padding-top: 10px; border-top: 1px solid #ccc; font-size: 9pt; color: #888; text-align: center; }',
+      '</style></head><body>',
+      paperHTML,
+      '</body></html>'
+    ].join('\n');
+  }
+
+  // ---- 列印按鈕:iframe + contentWindow.print() ----
+  btnPrint.addEventListener('click', function(){
+    var data = buildReportHTML();
+    if (!data) return;
+
+    var titleText = '案例分析報告 — ' + data.now;
+    var printDoc = buildPrintDocHTML(data.paperHTML, titleText);
+
+    // 移除舊 iframe
+    if (printFrame && printFrame.parentNode) {
+      printFrame.parentNode.removeChild(printFrame);
+      printFrame = null;
+    }
+
+    // 建立離屏但有實體 A4 尺寸的 iframe(Chrome 需要 paint 才能列印)
+    printFrame = document.createElement('iframe');
+    printFrame.setAttribute('aria-hidden', 'true');
+    printFrame.style.cssText = 'position:fixed;left:-10000px;top:0;width:210mm;height:297mm;border:0;opacity:0;pointer-events:none;';
+    document.body.appendChild(printFrame);
+
+    var printed = false;
+    printFrame.addEventListener('load', function(){
+      if (printed) return;
+      try {
+        var fdoc = printFrame.contentWindow.document;
+        if (!fdoc || !fdoc.querySelector('.ca-block')) return;
+      } catch (e) { return; }
+      printed = true;
+      setTimeout(function(){
+        try {
+          printFrame.contentWindow.focus();
+          printFrame.contentWindow.print();
+        } catch (err) {
+          alert('⚠️ 列印失敗:' + err.message);
+        }
+      }, 250);
+    });
+
+    var doc = printFrame.contentWindow.document;
+    doc.open();
+    doc.write(printDoc);
+    doc.close();
+  });
+
+  // ---- 存為 PDF 按鈕:透過隱藏 iframe 觸發列印對話框（選「另存為 PDF」即可下載）----
+  btnSavePdf.addEventListener('click', function(){
+    var data = buildReportHTML();
+    if (!data) return;
+
+    var titleText = '案例分析報告 — ' + data.now;
+    var printDoc = buildPrintDocHTML(data.paperHTML, titleText);
+
+    // 使用隱藏 iframe 觸發列印,避免彈出視窗被封鎖
+    var oldFrame = document.getElementById('case-savepdf-iframe');
+    if (oldFrame) oldFrame.remove();
+
+    var iframe = document.createElement('iframe');
+    iframe.id = 'case-savepdf-iframe';
+    iframe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:210mm;height:297mm;border:none;';
+    document.body.appendChild(iframe);
+
+    iframe.addEventListener('load', function () {
+      setTimeout(function () { iframe.contentWindow.print(); }, 300);
+    });
+
+    iframe.srcdoc = printDoc;
+  });
+})();
+</script>
+</body>
+</html>

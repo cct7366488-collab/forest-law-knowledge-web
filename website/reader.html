@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>閱讀器 | 林業政策與法規知識網</title>
+<link rel="stylesheet" href="assets/css/main.css?v=20260412">
+<link rel="stylesheet" href="assets/css/reader.css?v=20260412h">
+<!-- Markdown 渲染:marked.js(CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<!-- html2pdf.js — 用於「存為 PDF」按鈕,純前端產生 PDF -->
+<script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js"></script>
+</head>
+<body class="reader-body">
+
+  <!-- 頂端工具列 -->
+  <header class="reader-topbar">
+    <div class="reader-topbar-left">
+      <a href="javascript:history.length>1?history.back():location.assign('index.html');" class="reader-back-btn" title="返回上一頁">
+        ← 返回
+      </a>
+      <a href="index.html" class="reader-home-btn" title="回知識網首頁">
+        🏠 首頁
+      </a>
+    </div>
+    <div class="reader-topbar-center">
+      <span id="reader-title">📖 載入中...</span>
+    </div>
+    <div class="reader-topbar-right">
+      <button class="reader-tool-btn" onclick="document.body.classList.toggle('reader-wide')" title="寬/窄切換">
+        ↔ 版寬
+      </button>
+      <button id="reader-btn-print" class="reader-tool-btn" type="button" title="送到系統印表機列印">
+        🖨 列印
+      </button>
+      <button id="reader-btn-savepdf" class="reader-tool-btn" type="button" title="開啟列印對話框,選「另存為 PDF」即可下載">
+        📄 存為 PDF
+      </button>
+    </div>
+  </header>
+
+  <!-- 主要內容 -->
+  <main class="reader-main">
+    <article id="reader-content" class="reader-content">
+      <p class="reader-loading">📥 正在載入文件...</p>
+    </article>
+
+    <!-- 底部返回 -->
+    <div class="reader-footer-nav">
+      <a href="javascript:history.length>1?history.back():location.assign('index.html');" class="reader-back-btn">
+        ← 返回上一頁
+      </a>
+      <a href="index.html" class="reader-home-btn">
+        🏠 回知識網首頁
+      </a>
+      <button class="reader-tool-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        ⬆ 回到頂端
+      </button>
+    </div>
+  </main>
+
+  <script src="assets/js/reader.js?v=20260412h"></script>
+</body>
+</html>

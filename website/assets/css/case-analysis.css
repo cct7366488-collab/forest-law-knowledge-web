@@ -1,0 +1,641 @@
+/*
+ * 林業案例分析器 · 樣式表
+ * 配色採「綠色黑板 + 白色粉筆 + 奶油紙」風格
+ * -------------------------------------------------
+ */
+
+.ca-body {
+  background: #f8f5ec;
+  font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  color: #2b2d2a;
+  margin: 0;
+  padding-bottom: 80px;
+}
+
+/* === 頂部返回列(沿用 reader.css 的樣式) === */
+.reader-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  background: #1e3a2f;
+  color: #f8f5ec;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+.reader-topbar-left,
+.reader-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.reader-topbar-center {
+  flex: 1;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #e9c46a;
+}
+.reader-back-btn,
+.reader-home-btn,
+.reader-tool-btn {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #2d5a3f;
+  color: #f8f5ec;
+  border: 1px solid #e9c46a;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.reader-back-btn:hover,
+.reader-home-btn:hover,
+.reader-tool-btn:hover {
+  background: #e9c46a;
+  color: #1e3a2f;
+  transform: translateY(-1px);
+}
+
+/* === 主內容區 === */
+.ca-main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 30px 24px;
+}
+
+.ca-hero {
+  background: linear-gradient(135deg, #1e3a2f, #2d5a3f);
+  color: #f8f5ec;
+  padding: 30px 36px;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(30,58,47,0.2);
+}
+.ca-hero h1 {
+  margin: 0 0 14px;
+  font-size: 1.8rem;
+  color: #e9c46a;
+  border-bottom: 2px dashed rgba(233,196,106,0.4);
+  padding-bottom: 12px;
+}
+.ca-lead {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin: 0 0 16px;
+}
+.ca-lead strong { color: #e9c46a; }
+.ca-disclaimer-top {
+  background: rgba(255,255,255,0.1);
+  border-left: 4px solid #e9c46a;
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+/* === 工作區(左輸入 + 右結果) === */
+.ca-workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+@media (max-width: 900px) {
+  .ca-workspace { grid-template-columns: 1fr; }
+}
+
+.ca-input-panel,
+.ca-result-panel {
+  background: #fffef8;
+  border: 1px solid #d4d0c5;
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.ca-input-panel h2,
+.ca-result-panel h2 {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  color: #1e3a2f;
+  border-left: 5px solid #e9c46a;
+  padding-left: 12px;
+}
+
+.ca-label {
+  display: block;
+  font-size: 0.88rem;
+  color: #5a6152;
+  margin-bottom: 8px;
+}
+.ca-textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #c9c4b5;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.7;
+  color: #2b2d2a;
+  background: #faf8f0;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.ca-textarea:focus {
+  outline: none;
+  border-color: #2d5a3f;
+  box-shadow: 0 0 0 3px rgba(45,90,63,0.15);
+}
+
+.ca-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.ca-btn {
+  padding: 10px 20px;
+  border: 1px solid #c9c4b5;
+  border-radius: 8px;
+  background: #f0ede3;
+  color: #2b2d2a;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ca-btn:hover {
+  background: #e9e5d5;
+  transform: translateY(-1px);
+}
+.ca-btn-primary {
+  background: #2d5a3f;
+  border-color: #1e3a2f;
+  color: #f8f5ec;
+}
+.ca-btn-primary:hover {
+  background: #1e3a2f;
+  color: #e9c46a;
+}
+
+/* === 案例範本 === */
+.ca-examples {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px dashed #c9c4b5;
+}
+.ca-examples h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: #2d5a3f;
+}
+.ca-examples ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ca-example-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  background: #f8f5ec;
+  border: 1px solid #d4d0c5;
+  border-left: 3px solid #2d5a3f;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: #2b2d2a;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.ca-example-btn:hover {
+  background: #e9c46a;
+  border-left-color: #1e3a2f;
+  color: #1e3a2f;
+  transform: translateX(2px);
+}
+
+/* === 結果面板 === */
+.ca-result {
+  min-height: 300px;
+}
+.ca-placeholder {
+  text-align: center;
+  padding: 50px 20px;
+  color: #8a8875;
+}
+.ca-ph-icon { font-size: 3rem; margin-bottom: 16px; }
+.ca-ph-note {
+  font-size: 0.85rem;
+  color: #a0a090;
+  margin-top: 12px;
+}
+.ca-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: #2d5a3f;
+  font-size: 1.1rem;
+}
+.ca-error {
+  background: #ffe8e8;
+  border-left: 4px solid #c94343;
+  color: #8b2222;
+  padding: 14px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.ca-no-match {
+  background: #fff8e7;
+  border-left: 4px solid #e9c46a;
+  padding: 18px 22px;
+  border-radius: 8px;
+}
+.ca-no-match h3 { margin: 0 0 10px; color: #8b6914; }
+
+/* === 分析結果區塊 === */
+.ca-block {
+  background: #fdfbf2;
+  border: 1px solid #e1dcc7;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 18px;
+}
+.ca-block h3 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+  color: #1e3a2f;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e9c46a;
+}
+.ca-block h4 {
+  margin: 18px 0 8px;
+  font-size: 1rem;
+  color: #2d5a3f;
+}
+
+.ca-summary blockquote {
+  background: #1e3a2f;
+  color: #f8f5ec;
+  padding: 16px 20px;
+  border-radius: 8px;
+  border-left: 5px solid #e9c46a;
+  margin: 0 0 10px;
+  font-size: 0.98rem;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.ca-meta {
+  font-size: 0.85rem;
+  color: #6a7060;
+  margin: 8px 0 0;
+}
+
+/* 爭點清單 */
+.ca-issue-list {
+  margin: 0;
+  padding-left: 24px;
+  counter-reset: issue;
+}
+.ca-issue-list li {
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+.ca-issue-list li strong {
+  color: #1e3a2f;
+  font-size: 1.05rem;
+}
+.ca-issue-list li p {
+  margin: 4px 0 0;
+  color: #4a5142;
+  font-size: 0.94rem;
+}
+.ca-unit-tag {
+  display: inline-block;
+  background: #e9c46a;
+  color: #1e3a2f;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-left: 6px;
+}
+
+/* 議題詳情 */
+.ca-detail {
+  border-left: 5px solid #2d5a3f;
+}
+.ca-provisions {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+}
+.ca-provisions li {
+  background: #f8f5ec;
+  padding: 12px 14px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border-left: 3px solid #e9c46a;
+}
+.ca-provisions li strong {
+  display: block;
+  color: #1e3a2f;
+  font-size: 0.98rem;
+  margin-bottom: 4px;
+}
+.ca-provisions li p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #3d4136;
+  line-height: 1.7;
+}
+.ca-analysis,
+.ca-conclusion {
+  line-height: 1.9;
+  color: #2b2d2a;
+  font-size: 0.96rem;
+}
+.ca-analysis {
+  background: #f8f5ec;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-left: 3px solid #c9c4b5;
+}
+.ca-conclusion {
+  background: #e8f5e9;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-left: 3px solid #2d6a4f;
+}
+.ca-hits {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #6a7060;
+}
+.ca-tag {
+  display: inline-block;
+  background: #e9c46a;
+  color: #1e3a2f;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin: 0 4px 4px 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.ca-further {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #fff8e7;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #6a5a10;
+}
+.ca-further a {
+  color: #1e3a2f;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* 綜合結論 */
+.ca-final {
+  background: linear-gradient(135deg, #fdfbf2, #f8f5ec);
+  border: 2px solid #2d5a3f;
+}
+.ca-final ul {
+  padding-left: 22px;
+  line-height: 1.9;
+}
+.ca-disclaimer {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: #fff4d6;
+  border-left: 4px solid #e9c46a;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: #5a4a10;
+  line-height: 1.7;
+}
+
+/* === 涵蓋議題 grid === */
+.ca-kb-info {
+  background: #fffef8;
+  border: 1px solid #d4d0c5;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 28px;
+}
+.ca-kb-info h3 {
+  margin: 0 0 16px;
+  color: #1e3a2f;
+  border-left: 5px solid #e9c46a;
+  padding-left: 12px;
+}
+.ca-topic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.ca-topic {
+  background: #1e3a2f;
+  color: #f8f5ec;
+  padding: 14px 16px;
+  border-radius: 8px;
+  border-left: 4px solid #e9c46a;
+  text-align: center;
+  line-height: 1.6;
+}
+.ca-topic strong { color: #e9c46a; }
+.ca-topic small { color: rgba(248,245,236,0.75); font-size: 0.8rem; }
+
+/* === 頁內列印預覽浮層 === */
+/* 頁內浮層:點「列印」時才顯示,避免 popup blocker 與新分頁沙盒限制 */
+.print-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #d8d4c0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+.print-modal[data-open="1"] { display: block; }
+.print-modal .pm-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #1e3a2f;
+  color: #fff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+.print-modal .pm-topbar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.print-modal .pm-title { font-size: 14px; font-weight: 700; }
+.print-modal .pm-hint { font-size: 12px; opacity: 0.85; }
+.print-modal .pm-topbar-right { display: flex; gap: 8px; }
+.print-modal .pm-btn {
+  background: #e9c46a;
+  color: #1e3a2f;
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.print-modal .pm-btn:hover { background: #f4d079; }
+.print-modal .pm-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.print-modal .pm-btn-secondary:hover { background: rgba(255,255,255,0.1); }
+.print-modal .pm-paper {
+  max-width: 780px;
+  margin: 24px auto;
+  background: #fff;
+  color: #222;
+  padding: 40px 48px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height: 1.8;
+  font-size: 14px;
+}
+.print-modal .pm-paper .pr-header {
+  border-bottom: 3px double #1e3a2f;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.print-modal .pm-paper .pr-header h1 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  color: #1e3a2f;
+}
+.print-modal .pm-paper .pr-meta { font-size: 12px; color: #666; }
+.print-modal .pm-paper .pr-input-box {
+  background: #f5f5f0;
+  border-left: 4px solid #e9c46a;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.print-modal .pm-paper .pr-input-box strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #1e3a2f;
+}
+.print-modal .pm-paper .ca-block {
+  border: 1px solid #bbb;
+  padding: 14px 18px;
+  margin: 0 0 14px;
+  border-radius: 6px;
+  page-break-inside: avoid;
+}
+.print-modal .pm-paper .ca-block h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #1e3a2f;
+  border-bottom: 2px solid #e9c46a;
+  padding-bottom: 5px;
+}
+.print-modal .pm-paper .ca-block h4 {
+  margin: 12px 0 6px;
+  font-size: 14px;
+  color: #2d5a3f;
+}
+.print-modal .pm-paper .ca-summary blockquote {
+  background: #f0f0ea;
+  border-left: 4px solid #1e3a2f;
+  padding: 10px 14px;
+  margin: 0;
+  border-radius: 4px;
+}
+.print-modal .pm-paper .ca-provisions { list-style: none; padding: 0; margin: 0 0 10px; }
+.print-modal .pm-paper .ca-provisions li {
+  background: #f8f7f0;
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  border-left: 3px solid #e9c46a;
+  border-radius: 3px;
+}
+.print-modal .pm-paper .ca-provisions li strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #1e3a2f;
+}
+.print-modal .pm-paper .ca-analysis {
+  background: #f8f7f0;
+  padding: 8px 12px;
+  border-radius: 3px;
+}
+.print-modal .pm-paper .ca-conclusion {
+  background: #e8f5e9;
+  padding: 8px 12px;
+  border-radius: 3px;
+  border-left: 3px solid #2d6a4f;
+}
+.print-modal .pm-paper .pr-footer {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
+
+/* === 主頁面原生 @media print 樣式(直接 Ctrl+P 時使用) === */
+@media print {
+  /* 若使用者是直接按 Ctrl+P(未開浮層),沿用原樣式 */
+  body:not(.pm-open) .reader-topbar,
+  body:not(.pm-open) .ca-input-panel,
+  body:not(.pm-open) .ca-examples,
+  body:not(.pm-open) .ca-buttons,
+  body:not(.pm-open) .ca-kb-info,
+  body:not(.pm-open) .ca-hero,
+  body:not(.pm-open) .reader-tool-btn,
+  body:not(.pm-open) .reader-back-btn,
+  body:not(.pm-open) .reader-home-btn { display: none !important; }
+  body:not(.pm-open) .ca-workspace { grid-template-columns: 1fr; }
+  body:not(.pm-open) .ca-body { background: #fff; }
+  body:not(.pm-open) .ca-block {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  body:not(.pm-open) .ca-summary blockquote {
+    background: #f0f0f0;
+    color: #000;
+  }
+
+  /* 若浮層已開啟 — 只列印浮層紙張,隱藏其他所有東西 */
+  @page { size: A4; margin: 18mm 16mm; }
+  body.pm-open > *:not(.print-modal) { display: none !important; }
+  body.pm-open { background: #fff !important; }
+  body.pm-open .print-modal {
+    position: static !important;
+    background: #fff !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  body.pm-open .print-modal .pm-topbar { display: none !important; }
+  body.pm-open .print-modal .pm-paper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    font-size: 11pt !important;
+  }
+  body.pm-open .print-modal .pm-paper .pr-header h1 { font-size: 18pt !important; }
+  body.pm-open .print-modal .pm-paper .ca-block h3 { font-size: 13pt !important; }
+  body.pm-open .print-modal .pm-paper .ca-block h4 { font-size: 11pt !important; }
+}

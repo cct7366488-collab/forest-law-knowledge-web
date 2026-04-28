@@ -1,0 +1,531 @@
+/* ================================================================
+ * reader.css — 文件閱讀器樣式
+ * 對應 reader.html(Markdown 渲染、黑板風格、列印友善)
+ * ================================================================ */
+
+body.reader-body {
+  background: #f8f5ec;         /* 米白紙張感 */
+  color: #1e3a2f;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
+}
+
+/* ========== 頂端工具列 ========== */
+.reader-topbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #1e3a2f;        /* 黑板深綠 */
+  color: #f4f1de;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.reader-topbar-left,
+.reader-topbar-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.reader-topbar-center {
+  flex: 1 1 auto;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  color: #e9c46a;
+  padding: 0 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  min-width: 140px;
+}
+
+.reader-back-btn,
+.reader-home-btn,
+.reader-tool-btn {
+  background: #e9c46a;
+  color: #1e3a2f;
+  border: 2px solid #e9c46a;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.reader-back-btn:hover,
+.reader-home-btn:hover,
+.reader-tool-btn:hover {
+  background: #f4d37e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.reader-home-btn {
+  background: transparent;
+  color: #f4f1de;
+}
+
+.reader-home-btn:hover {
+  background: #2d6a4f;
+  color: #e9c46a;
+}
+
+.reader-tool-btn {
+  background: #2d6a4f;
+  color: #f4f1de;
+  border-color: #2d6a4f;
+}
+
+.reader-tool-btn:hover {
+  background: #3a8761;
+  color: #e9c46a;
+}
+
+/* ========== 內容區 ========== */
+.reader-main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+body.reader-wide .reader-main {
+  max-width: 1180px;
+}
+
+.reader-content {
+  background: #ffffff;
+  border: 1px solid #e0d9c6;
+  border-radius: 12px;
+  padding: 48px 56px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: #1a1a1a;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+@media (max-width: 640px) {
+  .reader-main { padding: 20px 12px 60px; }
+  .reader-content { padding: 24px 20px; font-size: 15px; }
+  .reader-topbar-center { flex-basis: 100%; order: -1; }
+}
+
+.reader-loading {
+  text-align: center;
+  color: #888;
+  padding: 60px 20px;
+  font-size: 16px;
+}
+
+.reader-error {
+  background: #fbeaea;
+  border-left: 4px solid #c44;
+  padding: 16px 20px;
+  color: #813333;
+  border-radius: 4px;
+  margin: 20px 0;
+}
+
+/* ========== Markdown 內容樣式 ========== */
+.reader-content h1 {
+  color: #1e3a2f;
+  border-bottom: 3px solid #e9c46a;
+  padding-bottom: 12px;
+  margin: 0 0 28px;
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.reader-content h2 {
+  color: #2d6a4f;
+  border-bottom: 2px solid #d4c89a;
+  padding-bottom: 8px;
+  margin: 40px 0 18px;
+  font-size: 23px;
+}
+
+.reader-content h3 {
+  color: #1e3a2f;
+  margin: 32px 0 14px;
+  font-size: 19px;
+  padding-left: 10px;
+  border-left: 4px solid #e9c46a;
+}
+
+.reader-content h4 {
+  color: #2d6a4f;
+  margin: 24px 0 10px;
+  font-size: 17px;
+}
+
+.reader-content p {
+  margin: 14px 0;
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+
+.reader-content ul,
+.reader-content ol {
+  padding-left: 28px;
+  margin: 14px 0;
+}
+
+.reader-content li {
+  margin: 6px 0;
+}
+
+.reader-content strong {
+  color: #1e3a2f;
+  font-weight: 700;
+  background: linear-gradient(transparent 60%, #fff2b8 60%);
+  padding: 0 2px;
+}
+
+.reader-content em {
+  color: #6a4e23;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.reader-content code {
+  background: #f4f1de;
+  color: #8a4a10;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.92em;
+  font-family: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+
+.reader-content pre {
+  background: #1e3a2f;
+  color: #f4f1de;
+  padding: 18px 22px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 18px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.reader-content pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.reader-content blockquote {
+  border-left: 5px solid #e9c46a;
+  background: #faf6e6;
+  margin: 18px 0;
+  padding: 12px 20px;
+  color: #5a4a2a;
+  border-radius: 0 6px 6px 0;
+}
+
+.reader-content blockquote p:first-child { margin-top: 0; }
+.reader-content blockquote p:last-child { margin-bottom: 0; }
+
+.reader-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 15px;
+  border: 1px solid #d4c89a;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.reader-content th {
+  background: #1e3a2f;
+  color: #e9c46a;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  border: 1px solid #2d6a4f;
+}
+
+.reader-content td {
+  padding: 9px 14px;
+  border: 1px solid #e0d9c6;
+  vertical-align: top;
+}
+
+.reader-content tr:nth-child(even) td {
+  background: #faf6e6;
+}
+
+.reader-content hr {
+  border: none;
+  border-top: 2px dashed #d4c89a;
+  margin: 32px 0;
+}
+
+.reader-content a {
+  color: #2d6a4f;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.reader-content a:hover {
+  color: #e76f51;
+}
+
+/* ========== 底部返回列 ========== */
+.reader-footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding: 24px;
+  background: #f4f1de;
+  border: 1px dashed #d4c89a;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+/* 底部返回列專用覆寫 —
+   .reader-home-btn 原本是為頂端深綠 topbar 設計(cream 文字 + 透明背景),
+   但底部返回列的背景也是 cream #f4f1de,會造成文字隱形。
+   因此在底部把它改成「深綠背景 + 金黃文字」的明顯樣式。*/
+.reader-footer-nav .reader-home-btn {
+  background: #1e3a2f;
+  color: #e9c46a;
+  border-color: #1e3a2f;
+}
+.reader-footer-nav .reader-home-btn:hover {
+  background: #2d6a4f;
+  color: #f4d37e;
+}
+
+/* ========== 目錄(自動產生)========== */
+.reader-toc {
+  background: #faf6e6;
+  border: 1px solid #e0d9c6;
+  border-left: 4px solid #e9c46a;
+  padding: 16px 20px;
+  margin: 0 0 30px;
+  border-radius: 6px;
+}
+
+.reader-toc-title {
+  font-weight: 700;
+  color: #1e3a2f;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.reader-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.reader-toc li {
+  padding-left: 0;
+}
+
+.reader-toc li.toc-h3 { padding-left: 20px; font-size: 13px; color: #5a4a2a; }
+.reader-toc li.toc-h4 { padding-left: 40px; font-size: 12.5px; color: #7a6a4a; }
+
+.reader-toc a {
+  color: #2d6a4f;
+  text-decoration: none;
+}
+
+.reader-toc a:hover {
+  color: #e76f51;
+  text-decoration: underline;
+}
+
+/* ========== 頁內列印預覽浮層 ========== */
+.print-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #d8d4c0;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  display: none;
+}
+.print-modal[data-open="1"] { display: block; }
+.print-modal .pm-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #1e3a2f;
+  color: #fff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+.print-modal .pm-topbar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.print-modal .pm-title { font-size: 14px; font-weight: 700; }
+.print-modal .pm-hint { font-size: 12px; opacity: 0.85; }
+.print-modal .pm-topbar-right { display: flex; gap: 8px; }
+.print-modal .pm-btn {
+  background: #e9c46a;
+  color: #1e3a2f;
+  border: 0;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+}
+.print-modal .pm-btn:hover { background: #f4d079; }
+.print-modal .pm-btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.print-modal .pm-btn-secondary:hover { background: rgba(255,255,255,0.1); }
+.print-modal .pm-paper {
+  max-width: 780px;
+  margin: 24px auto;
+  background: #fff;
+  color: #222;
+  padding: 40px 48px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  font-family: "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height: 1.85;
+  font-size: 14px;
+}
+.print-modal .pm-paper .pr-header {
+  border-bottom: 3px double #1e3a2f;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+.print-modal .pm-paper .pr-header h1 {
+  margin: 0 0 6px;
+  font-size: 22px;
+  color: #1e3a2f;
+}
+.print-modal .pm-paper .pr-meta { font-size: 12px; color: #666; }
+.print-modal .pm-paper article h1 { font-size: 22px; color: #1e3a2f; margin: 20px 0 12px; }
+.print-modal .pm-paper article h2 {
+  font-size: 17px; color: #1e3a2f; margin: 18px 0 10px;
+  padding-bottom: 5px; border-bottom: 2px solid #e9c46a;
+}
+.print-modal .pm-paper article h3 { font-size: 15px; color: #2d5a3f; margin: 14px 0 8px; }
+.print-modal .pm-paper article h4 { font-size: 14px; color: #2d5a3f; margin: 12px 0 6px; }
+.print-modal .pm-paper article p { margin: 0 0 10px; text-align: justify; }
+.print-modal .pm-paper article ul,
+.print-modal .pm-paper article ol { margin: 0 0 10px; padding-left: 22px; }
+.print-modal .pm-paper article li { margin-bottom: 4px; }
+.print-modal .pm-paper article blockquote {
+  background: #f8f5e6;
+  border-left: 4px solid #e9c46a;
+  padding: 8px 12px;
+  margin: 10px 0;
+  border-radius: 3px;
+  page-break-inside: avoid;
+}
+.print-modal .pm-paper article code {
+  background: #f0f0ea;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-family: Consolas,"Courier New",monospace;
+  font-size: 13px;
+}
+.print-modal .pm-paper article pre {
+  background: #f0f0ea;
+  padding: 10px 14px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 13px;
+}
+.print-modal .pm-paper article pre code { background: none; padding: 0; }
+.print-modal .pm-paper article table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 13px;
+}
+.print-modal .pm-paper article th,
+.print-modal .pm-paper article td {
+  border: 1px solid #999;
+  padding: 6px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.print-modal .pm-paper article th { background: #e9c46a; color: #1e3a2f; font-weight: 700; }
+.print-modal .pm-paper article a { color: #1e3a2f; text-decoration: underline; }
+.print-modal .pm-paper article hr { border: 0; border-top: 1px solid #ccc; margin: 14px 0; }
+.print-modal .pm-paper .pr-footer {
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #ccc;
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
+
+/* ========== 列印(存為 PDF)樣式 ========== */
+@media print {
+  /* 直接 Ctrl+P(未開浮層)— 沿用原樣式 */
+  body.reader-body:not(.pm-open) { background: #fff; }
+  body.reader-body:not(.pm-open) .reader-topbar,
+  body.reader-body:not(.pm-open) .reader-footer-nav { display: none !important; }
+  body.reader-body:not(.pm-open) .reader-main { padding: 0; max-width: 100%; }
+  body.reader-body:not(.pm-open) .reader-content {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    font-size: 11pt;
+  }
+  body.reader-body:not(.pm-open) .reader-content h1 { font-size: 20pt; page-break-after: avoid; }
+  body.reader-body:not(.pm-open) .reader-content h2 { font-size: 15pt; page-break-after: avoid; margin-top: 20pt; }
+  body.reader-body:not(.pm-open) .reader-content h3 { font-size: 13pt; page-break-after: avoid; }
+  body.reader-body:not(.pm-open) .reader-content h4 { font-size: 11pt; page-break-after: avoid; }
+  body.reader-body:not(.pm-open) .reader-content pre,
+  body.reader-body:not(.pm-open) .reader-content blockquote,
+  body.reader-body:not(.pm-open) .reader-content table { page-break-inside: avoid; }
+  body.reader-body:not(.pm-open) .reader-content a { color: inherit; text-decoration: none; }
+  body.reader-body:not(.pm-open) .reader-toc { page-break-after: always; }
+
+  /* 浮層已開啟 — 只列印浮層紙張,隱藏其他所有東西 */
+  @page { size: A4; margin: 18mm 16mm; }
+  body.pm-open > *:not(.print-modal) { display: none !important; }
+  body.pm-open { background: #fff !important; }
+  body.pm-open .print-modal {
+    position: static !important;
+    background: #fff !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  body.pm-open .print-modal .pm-topbar { display: none !important; }
+  body.pm-open .print-modal .pm-paper {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    font-size: 11pt !important;
+    line-height: 1.75 !important;
+  }
+  body.pm-open .print-modal .pm-paper .pr-header h1 { font-size: 18pt !important; }
+  body.pm-open .print-modal .pm-paper article h1 { font-size: 20pt !important; page-break-after: avoid; }
+  body.pm-open .print-modal .pm-paper article h2 { font-size: 15pt !important; page-break-after: avoid; margin-top: 20pt !important; }
+  body.pm-open .print-modal .pm-paper article h3 { font-size: 13pt !important; page-break-after: avoid; }
+  body.pm-open .print-modal .pm-paper article h4 { font-size: 11pt !important; page-break-after: avoid; }
+  body.pm-open .print-modal .pm-paper article pre,
+  body.pm-open .print-modal .pm-paper article blockquote,
+  body.pm-open .print-modal .pm-paper article table { page-break-inside: avoid; }
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林業政策與法規知識網</title>
+<link rel="stylesheet" href="assets/css/main.css?v=20260412h">
+<link rel="stylesheet" href="assets/css/pen.css">
+</head>
+<body data-mode="student">
+
+<!-- ========== 頂部導覽列 ========== -->
+<header class="topbar">
+  <div class="topbar-left">
+    <h1 class="site-title">
+      🌲 林業政策與法規知識網
+    </h1>
+    <span class="site-subtitle">基於 NotebookLM「森林經營管理相關法規」之互動式教材</span>
+  </div>
+  <div class="topbar-right">
+    <div class="mode-switch">
+      <span class="mode-label">模式</span>
+      <button id="mode-student" class="mode-btn active" onclick="setMode('student')">👩‍🎓 學生</button>
+      <button id="mode-teacher" class="mode-btn" onclick="setMode('teacher')">👨‍🏫 教師</button>
+    </div>
+    <button class="pen-toggle" onclick="togglePen()">✏️ 畫筆</button>
+  </div>
+</header>
+
+<!-- ========== 三欄版面 ========== -->
+<div class="layout">
+
+  <!-- 左側:單元導覽 -->
+  <aside class="sidebar-left">
+    <nav>
+      <h2>📚 課程單元</h2>
+      <ul class="unit-list">
+        <li><a href="unit-01.html" class="unit-link" data-unit="1">單元 1<br><span>森林法制總論</span></a></li>
+        <li><a href="unit-02.html" class="unit-link" data-unit="2">單元 2<br><span>森林法與施行細則</span></a></li>
+        <li><a href="unit-03.html" class="unit-link" data-unit="3">單元 3<br><span>保安林制度</span></a></li>
+        <li><a href="unit-04.html" class="unit-link" data-unit="4">單元 4<br><span>林產物處分與伐採查驗</span></a></li>
+        <li><a href="unit-05.html" class="unit-link" data-unit="5">單元 5<br><span>獎勵造林 2.0</span></a></li>
+        <li><a href="unit-06.html" class="unit-link" data-unit="6">單元 6<br><span>林下經濟</span></a></li>
+        <li><a href="unit-07.html" class="unit-link" data-unit="7">單元 7<br><span>森林遊樂與自然保護</span></a></li>
+        <li><a href="unit-08.html" class="unit-link" data-unit="8">單元 8<br><span>森林與土地利用管制</span></a></li>
+        <li><a href="unit-09.html" class="unit-link" data-unit="9">單元 9<br><span>原住民族林業權益</span></a></li>
+        <li><a href="unit-10.html" class="unit-link" data-unit="10">單元 10<br><span>氣候變遷與森林碳匯</span></a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="case-analysis.html" class="resource-link" style="background:#2d5a3f;color:#e9c46a;font-weight:700;border:1px solid #e9c46a;">⚖️ 案例分析器 (新)</a>
+      <a href="reader.html?src=assets/resources/01_講義_林業政策與相關法規_完整版.md&title=📝 完整講義（10 單元）" class="resource-link">📝 完整講義（10 單元）</a>
+      <a href="reader.html?src=assets/resources/02_課本文章_林業政策與相關法規_完整版.md&title=📚 完整課本（10 單元）" class="resource-link">📚 完整課本（10 單元）</a>
+      <a href="reader.html?src=assets/resources/00_法規清單與架構.md&title=📋 34 部法規清單" class="resource-link">📋 34 部法規清單</a>
+      <a href="reader.html?src=assets/resources/04_科普文章_森林法規入門.md&title=📖 科普文章(白話版)" class="resource-link">📖 科普文章(白話版)</a>
+    </div>
+  </aside>
+
+  <!-- 中間:主要內容 -->
+  <main class="content">
+
+    <section class="hero">
+      <h2>🌲 歡迎來到林業政策與法規知識網</h2>
+      <p class="hero-desc">
+        本站整合大學林業科系<strong>講義</strong>、正式<strong>課本文章</strong>、
+        NotebookLM 產生之<strong>簡報投影片</strong>、<strong>130 題互動題庫</strong>、
+        以及<strong>科普文章</strong>,適合自學、備課、證照考試使用。
+      </p>
+
+      <div class="course-overview">
+        <h3>📖 課程架構(10 單元)</h3>
+        <div class="unit-grid">
+          <a href="unit-01.html" class="unit-card" data-unit="1">
+            <div class="unit-num">1</div>
+            <div class="unit-title">森林法制總論</div>
+            <div class="unit-sub">憲法、森林法§1-5、主管機關體系</div>
+          </a>
+          <a href="unit-02.html" class="unit-card" data-unit="2">
+            <div class="unit-num">2</div>
+            <div class="unit-title">森林法與施行細則</div>
+            <div class="unit-sub">森林法全文、貴重木 12 種、樹木保護專章</div>
+          </a>
+          <a href="unit-03.html" class="unit-card" data-unit="3">
+            <div class="unit-num">3</div>
+            <div class="unit-title">保安林制度</div>
+            <div class="unit-sub">16 種類型、解除審核、伐期齡表</div>
+          </a>
+          <a href="unit-04.html" class="unit-card" data-unit="4">
+            <div class="unit-num">4</div>
+            <div class="unit-title">林產物處分與伐採查驗</div>
+            <div class="unit-sub">處分規則、疏伐規範、查驗印</div>
+          </a>
+          <a href="unit-05.html" class="unit-card" data-unit="5">
+            <div class="unit-num">5</div>
+            <div class="unit-title">獎勵造林 2.0</div>
+            <div class="unit-sub">堆疊式獎勵金、最高 60 萬/公頃</div>
+          </a>
+          <a href="unit-06.html" class="unit-card" data-unit="6">
+            <div class="unit-num">6</div>
+            <div class="unit-title">林下經濟</div>
+            <div class="unit-sub">9 項品項、臺灣山茶、審查流程</div>
+          </a>
+          <a href="unit-07.html" class="unit-card" data-unit="7">
+            <div class="unit-num">7</div>
+            <div class="unit-title">森林遊樂與自然保護</div>
+            <div class="unit-sub">4 大分區、檢舉獎金、森林保護辦法</div>
+          </a>
+          <a href="unit-08.html" class="unit-card" data-unit="8">
+            <div class="unit-num">8</div>
+            <div class="unit-title">森林與土地利用管制</div>
+            <div class="unit-sub">國土計畫法、水保法、山坡地條例</div>
+          </a>
+          <a href="unit-09.html" class="unit-card" data-unit="9">
+            <div class="unit-num">9</div>
+            <div class="unit-title">原住民族林業權益</div>
+            <div class="unit-sub">原基法、共管會、採取規則</div>
+          </a>
+          <a href="unit-10.html" class="unit-card" data-unit="10">
+            <div class="unit-num">10</div>
+            <div class="unit-title">氣候變遷與森林碳匯</div>
+            <div class="unit-sub">淨零目標、造林碳匯方法學</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="features">
+        <h3>✨ 本站特色</h3>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feat-icon">📝</div>
+            <h4>完整講義</h4>
+            <p>10 單元、34 部核心法規,含學習目標與課後思考</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">📚</div>
+            <h4>課本文章</h4>
+            <p>敘述式教科書,適合深度自學與閱讀</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">📊</div>
+            <h4>黑板風簡報</h4>
+            <p>由 NotebookLM 產生,每單元配示意圖</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">✅</div>
+            <h4>互動題庫</h4>
+            <p>100 選擇題即時批改 + 30 申論題要點</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">📺</div>
+            <h4>YouTube 教學影片</h4>
+            <p>每單元預留影片嵌入區</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">✏️</div>
+            <h4>畫筆工具</h4>
+            <p>任何頁面都可畫線、畫圈、標記重點</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">👩‍🏫</div>
+            <h4>學生/教師切換</h4>
+            <p>教師模式可看解析與備課提示</p>
+          </div>
+          <div class="feature-card">
+            <div class="feat-icon">📖</div>
+            <h4>科普版</h4>
+            <p>一般民眾也能讀懂的白話解說</p>
+          </div>
+          <a href="case-analysis.html" class="feature-card" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,#fff8e7,#fdfbf2);border:2px solid #e9c46a;">
+            <div class="feat-icon">⚖️</div>
+            <h4>案例分析器 (新)</h4>
+            <p>輸入真實案例自動產出結構化法律見解</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="credits">
+      <h3>🙏 資料來源與致謝</h3>
+      <ul>
+        <li><strong>NotebookLM 筆記本</strong>:森林經營管理相關法規(165 份 source,本站篩選 34 部森林核心法規)</li>
+        <li><strong>全國法規資料庫</strong>:https://law.moj.gov.tw</li>
+        <li><strong>農業部林業及自然保育署</strong>:https://www.forest.gov.tw</li>
+        <li><strong>原住民族委員會</strong>:https://www.cip.gov.tw</li>
+        <li><strong>環境部</strong>:https://www.moenv.gov.tw</li>
+      </ul>
+      <p class="disclaimer">
+        ⚠️ 本站內容僅供教學研究使用。正式引用條文或辦理申請時,請以全國法規資料庫之最新公布版本為準。
+      </p>
+    </section>
+  </main>
+
+  <!-- 右側:工具面板 -->
+  <aside class="sidebar-right">
+    <div class="tool-panel">
+      <h3>🛠️ 工具</h3>
+      <div class="tool-section">
+        <h4>搜尋</h4>
+        <input type="search" id="search-box" placeholder="搜尋法規/關鍵字..." oninput="searchContent(this.value)">
+        <ul id="search-results"></ul>
+      </div>
+      <div class="tool-section">
+        <h4>我的筆記</h4>
+        <textarea id="user-notes" placeholder="在此記錄你的學習筆記..." rows="6"></textarea>
+        <button onclick="saveNotes()" class="btn-small">💾 儲存</button>
+      </div>
+      <div class="tool-section">
+        <h4>學習進度</h4>
+        <div id="progress-display" class="progress-display">
+          <!-- 由 JS 填入 -->
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ========== 畫筆工具 Canvas (固定浮層) ========== -->
+<canvas id="pen-canvas" class="pen-canvas hidden"></canvas>
+<div id="pen-toolbar" class="pen-toolbar hidden">
+  <button class="pen-color" style="background:#000" onclick="setPenColor('#000000')" title="黑色"></button>
+  <button class="pen-color" style="background:#d32f2f" onclick="setPenColor('#d32f2f')" title="紅色"></button>
+  <button class="pen-color" style="background:#1976d2" onclick="setPenColor('#1976d2')" title="藍色"></button>
+  <button class="pen-color" style="background:#388e3c" onclick="setPenColor('#388e3c')" title="綠色"></button>
+  <button class="pen-color highlight" style="background:#fff176" onclick="setPenColor('#fff176',true)" title="螢光黃"></button>
+  <input type="range" id="pen-width" min="1" max="20" value="3" onchange="setPenWidth(this.value)" title="筆粗">
+  <button onclick="clearCanvas()" title="清除">🗑️</button>
+  <button onclick="togglePen()" title="關閉畫筆">❌</button>
+</div>
+
+<!-- ========== Footer ========== -->
+<footer class="footer">
+  <p>林業政策與法規知識網 · v1.0 · 2026-04-11</p>
+  <p>內容版權:CC BY-NC-SA 4.0 · 歡迎非商業使用與分享</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/pen.js"></script>
+<script src="assets/js/notes.js?v=20260412h"></script>
+</body>
+</html>

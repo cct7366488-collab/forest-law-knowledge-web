@@ -1,0 +1,23 @@
+# OS / Editor
+Thumbs.db
+.DS_Store
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# Temp / build
+*.tmp
+*.bak
+*.log
+.cache/
+
+# Node / Python (if any)
+node_modules/
+__pycache__/
+*.pyc
+.venv/

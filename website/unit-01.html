@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 1:森林法制總論 | 林業政策與法規知識網</title>
+<link rel="stylesheet" href="assets/css/main.css?v=20260412h">
+<link rel="stylesheet" href="assets/css/pen.css">
+<script>window.UNIT_ID = 1;</script>
+</head>
+<body data-mode="student">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <h1 class="site-title"><a href="index.html" style="color:white;text-decoration:none;">🌲 林業政策與法規知識網</a></h1>
+    <span class="site-subtitle">單元 1:森林法制總論</span>
+  </div>
+  <div class="topbar-right">
+    <a href="index.html" class="home-btn" title="回首頁">🏠 回首頁</a>
+    <div class="mode-switch">
+      <span class="mode-label">模式</span>
+      <button id="mode-student" class="mode-btn active" onclick="setMode('student')">👩‍🎓 學生</button>
+      <button id="mode-teacher" class="mode-btn" onclick="setMode('teacher')">👨‍🏫 教師</button>
+    </div>
+    <button class="pen-toggle" onclick="togglePen()">✏️ 畫筆</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar-left">
+    <nav>
+      <h2>📚 課程單元</h2>
+      <ul class="unit-list">
+        <li><a href="unit-01.html" class="unit-link active" data-unit="1">單元 1<br><span>森林法制總論</span></a></li>
+        <li><a href="unit-02.html" class="unit-link" data-unit="2">單元 2<br><span>森林法與施行細則</span></a></li>
+        <li><a href="unit-03.html" class="unit-link" data-unit="3">單元 3<br><span>保安林制度</span></a></li>
+        <li><a href="unit-04.html" class="unit-link" data-unit="4">單元 4<br><span>林產物處分與伐採查驗</span></a></li>
+        <li><a href="unit-05.html" class="unit-link" data-unit="5">單元 5<br><span>獎勵造林 2.0</span></a></li>
+        <li><a href="unit-06.html" class="unit-link" data-unit="6">單元 6<br><span>林下經濟</span></a></li>
+        <li><a href="unit-07.html" class="unit-link" data-unit="7">單元 7<br><span>森林遊樂與自然保護</span></a></li>
+        <li><a href="unit-08.html" class="unit-link" data-unit="8">單元 8<br><span>森林與土地利用管制</span></a></li>
+        <li><a href="unit-09.html" class="unit-link" data-unit="9">單元 9<br><span>原住民族林業權益</span></a></li>
+        <li><a href="unit-10.html" class="unit-link" data-unit="10">單元 10<br><span>氣候變遷與森林碳匯</span></a></li>
+        <li style="margin-top:12px;border-top:1px dashed #d4d0c5;padding-top:12px;"><a href="case-analysis.html" class="unit-link" style="background:#2d5a3f;color:#e9c46a;border:1px solid #e9c46a;">⚖️ 案例分析器<br><span>輸入真實案例 → 法律見解</span></a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="unit-header">
+      <h1>單元 1:森林法制總論</h1>
+      <div class="unit-subtitle">從憲法到林業保育署 — 建立林業法規的整體觀</div>
+    </div>
+
+    <!-- 分頁標籤 -->
+    <div class="tabs">
+      <button id="tab-btn-lecture" class="tab-btn active" onclick="switchTab('lecture')">📝 講義</button>
+      <button id="tab-btn-textbook" class="tab-btn" onclick="switchTab('textbook')">📚 課本</button>
+      <button id="tab-btn-slide" class="tab-btn" onclick="switchTab('slide')">📊 簡報</button>
+      <button id="tab-btn-video" class="tab-btn" onclick="switchTab('video')">📺 影片</button>
+      <button id="tab-btn-quiz" class="tab-btn" onclick="switchTab('quiz')">✅ 題庫</button>
+    </div>
+
+    <!-- 講義 -->
+    <div id="tab-content-lecture" class="tab-content active lecture-body">
+      <h2>學習目標</h2>
+      <ol>
+        <li>理解我國森林法制的層級體系(憲法 → 法律 → 施行細則 → 子法 → 行政規則)</li>
+        <li>掌握森林法立法目的、森林的法律定義與分類</li>
+        <li>熟悉森林主管機關體系與 2023 年改制後「林業及自然保育署」的組織</li>
+        <li>釐清森林法與相關法律(水保、國公園、野保、環評、原基、氣候因應)之間的關係</li>
+      </ol>
+
+      <h2>1-1 憲法層級的森林保育精神</h2>
+      <p>《中華民國憲法》增修條文第 10 條明定「經濟及科學技術發展,應與環境及生態保護兼籌並顧」,這是森林保育的最上位憲法基礎。</p>
+
+      <h2>1-2 《森林法》的立法目的與沿革</h2>
+      <ul>
+        <li><strong>立法目的</strong>(第 1 條):為<strong>保育森林資源</strong>,發揮森林<strong>公益</strong>及<strong>經濟</strong>效用,並為保護具<strong>保存價值之樹木</strong>及其生長環境。</li>
+        <li><strong>現行版本</strong>:民國 110 年 5 月 5 日修正公布。</li>
+        <li><strong>重要沿革里程碑</strong>:
+          <ul>
+            <li>民國 21 年首次公布</li>
+            <li>民國 74 年大修:確立「<strong>國土保安長遠利益</strong>」優先於經濟利益</li>
+            <li>民國 93 年增訂:原住民族傳統領域依生活慣俗採取森林產物權益</li>
+            <li>民國 104 年增訂:第五章之一「<strong>樹木保護</strong>」專章</li>
+            <li>民國 110 年修正:擴大貴重木保護範圍與量刑</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>1-3 主管機關體系(森林法第 2 條)</h2>
+      <ul>
+        <li><strong>中央</strong>:農業部(原行政院農業委員會,2023 年 8 月 1 日升格)
+          <ul>
+            <li>專責機關:<strong>農業部林業及自然保育署</strong>(原林務局,2023 年 8 月 1 日改制)</li>
+            <li>下轄 8 個地區分署:宜蘭、新竹、臺中、南投、嘉義、屏東、臺東、花蓮</li>
+          </ul>
+        </li>
+        <li><strong>直轄市</strong>:直轄市政府</li>
+        <li><strong>縣(市)</strong>:縣(市)政府</li>
+      </ul>
+
+      <h2>1-4 森林的法律定義與分類(第 3、4 條)</h2>
+      <p><strong>森林定義</strong>:<strong>林地</strong>及其<strong>群生竹、木</strong>之總稱。</p>
+      <p><strong>林地範圍</strong>(施行細則第 3 條):</p>
+      <ol>
+        <li>編定為林業用地之土地</li>
+        <li>未劃定分區但經認定為林地之土地</li>
+        <li>保安林用地</li>
+        <li>森林遊樂區土地</li>
+        <li>國家公園內經認定為林地之土地</li>
+      </ol>
+      <p><strong>所有權分類</strong>:</p>
+      <ul>
+        <li><strong>國有林</strong>:屬國家所有及國家領域內無主之森林(第 12 條)</li>
+        <li><strong>公有林</strong>:直轄市、縣市、鄉鎮市或公法人所有</li>
+        <li><strong>私有林</strong>:自然人或私法人所有</li>
+      </ul>
+      <p><strong>森林以國有為原則</strong>(第 3 條第 2 項)</p>
+      <p><strong>視為森林所有人</strong>(第 4 條):以所有竹木為目的,對他人土地有地上權、租賃權、其他使用收益權者。</p>
+
+      <h2>1-5 林業最高指導原則(第 5 條)</h2>
+      <blockquote style="background:#fef3c7;border-left:4px solid #d97706;padding:14px 18px;margin:16px 0;border-radius:4px;">
+        <strong>林業之管理經營,應以國土保安長遠利益為主要目標。</strong>
+      </blockquote>
+      <p>此條文是理解我國整體林業政策的鑰匙 — 經濟效益是次要的,<strong>公益性與國土保安必須優先</strong>。</p>
+
+      <h2>1-6 森林法與相關法律的交集</h2>
+      <table>
+        <tr><th>相關法律</th><th>與森林法之連結</th></tr>
+        <tr><td>水土保持法</td><td>森林內興修工程破壞森林之虞者應實施水保(§9);林地陡峻位於水庫集水區者限制採伐(§10)</td></tr>
+        <tr><td>國家公園法</td><td>國家公園設於森林區域者,林業主管機關依森林法配合國家公園計畫管理(§16)</td></tr>
+        <tr><td>野生動物保育法</td><td>自然保護區內騷擾野生動物巢穴者依森林法處罰鍰(§56-3)</td></tr>
+        <tr><td>環境影響評估法</td><td>森林遊樂區設置須通過環評審查(§17)</td></tr>
+        <tr><td>原住民族基本法</td><td>原住民土地為林業用地者,應會同中央原民主管機關核准(§6)</td></tr>
+        <tr><td>氣候變遷因應法</td><td>自然碳匯(森林碳匯)為淨零轉型關鍵戰略,依賴森林法造林/保護機制落實</td></tr>
+      </table>
+
+      <h2>延伸閱讀</h2>
+      <ul>
+        <li>臺灣森林經營管理方案(民國 86 年 5 月 13 日最新修正)</li>
+        <li>《林業及自然保育署組織法》</li>
+      </ul>
+
+      <h2>課後思考</h2>
+      <ol>
+        <li>為什麼森林法要把「國土保安長遠利益」列為最高原則,而非經濟效益?</li>
+        <li>「森林以國有為原則」的政策意涵是什麼?對私有林經營有何影響?</li>
+        <li>林業保育署改制(從林務局)對臺灣林業治理帶來哪些變革?</li>
+      </ol>
+    </div>
+
+    <!-- 課本 -->
+    <div id="tab-content-textbook" class="tab-content lecture-body">
+      <h2>1.1 森林保育的憲法基礎</h2>
+      <p>臺灣森林保育的最上位法源,是《中華民國憲法》增修條文第 10 條:「經濟及科學技術發展,應與環境及生態保護兼籌並顧。」這一句話奠定了<strong>生態保護與經濟發展並重</strong>的基本國策,後續所有森林法規皆源於此精神。</p>
+
+      <h2>1.2 森林法的立法目的與沿革</h2>
+      <p>《森林法》自民國 21 年公布以來,歷經多次修正,現行版本為民國 110 年 5 月 5 日修正公布。其第一條開宗明義揭示立法目的:「<strong>為保育森林資源,發揮森林公益及經濟效用,並為保護具有保存價值之樹木及其生長環境,制定本法。</strong>」這條文將森林的三大價值 — 保育、公益、經濟 — 並列,並加入了樹木保護的面向。</p>
+      <p>森林法的歷史演進可以分為幾個重要里程碑:民國 74 年的大修確立了「國土保安長遠利益」優先於經濟利益的原則;民國 93 年增訂原住民族傳統領域依生活慣俗採取森林產物的權益,是林業法制進入族群權益保障的起點;民國 104 年增訂樹木保護專章(第五章之一),回應都市老樹保護運動;民國 110 年則擴大了貴重木的保護範圍與量刑,尤其針對山老鼠集團盜伐。</p>
+      <p>這些修正反映了臺灣林業治理從「伐木為主」到「保育為重」的典範轉移。讀者在研讀個別條文時,應時時回到這個歷史脈絡,才能理解立法者的真正意圖。</p>
+
+      <h2>1.3 主管機關體系與林業保育署的改制</h2>
+      <p>依《森林法》第 2 條,我國森林主管機關採三級制:中央為農業部(原行政院農業委員會,於 2023 年 8 月 1 日升格為農業部);直轄市為直轄市政府;縣(市)為縣(市)政府。</p>
+      <p>農業部轄下設有專責的「<strong>林業及自然保育署</strong>」,即原「林務局」於 2023 年 8 月 1 日改制後的新名稱。這次改制不僅是名稱的更改,更反映政策方向的調整 — 從過去偏重「林業生產」(forestry),擴展到「森林生態系服務」(forest ecosystem services)與「自然保育」(conservation)並重。林業保育署下轄 8 個地區分署(宜蘭、新竹、臺中、南投、嘉義、屏東、臺東、花蓮),是第一線執行機關。</p>
+
+      <h2>1.4 森林的法律定義與分類</h2>
+      <p>一般人所稱的「森林」是生態學上的概念,但在法律上,《森林法》第 3 條將森林定義為「<strong>林地及其群生竹、木之總稱</strong>」。這個定義的精髓在於「林地」與「竹木」<strong>兩要素缺一不可</strong> — 單純的草原不是森林,光禿的林地也不是森林。</p>
+      <p>那什麼是「林地」?施行細則第 3 條明列 5 種情形:</p>
+      <ol>
+        <li>編定為林業用地之土地(非都市土地使用管制規則)</li>
+        <li>未劃定使用分區但經地方主管機關認定為林地</li>
+        <li>依法編入為保安林之土地</li>
+        <li>依法設置為森林遊樂區之土地</li>
+        <li>依國家公園法劃定範圍內,經認定為林地之土地</li>
+      </ol>
+      <p>這個清單告訴我們:<strong>林地的認定是法律行為</strong>,而非單純的植被狀態。一塊長滿樹的土地,若未被法律認定為林地,仍不受森林法管轄。</p>
+      <p>森林依所有權分為三類:國有林、公有林、私有林,且「<strong>森林以國有為原則</strong>」(第 3 條第 2 項)。這句話常被誤解為「臺灣森林大部分是國有」,但更準確的解釋是:<strong>在登記上屬於不明者,視為國有</strong>;亦即私人若無法舉證,森林的所有權推定歸國家。這個推定極大地保障了公有財產,同時也成為私有林經營者維權的挑戰。</p>
+      <p>另有一種擬制條款(第 4 條):以所有竹木為目的,對他人土地有地上權、租賃權或其他使用收益權者,於森林法適用上「視為森林所有人」。這是為了讓租地造林者能享有與所有人相同的權利義務。</p>
+
+      <h2>1.5 國土保安長遠利益:林業最高指導原則</h2>
+      <p>《森林法》第 5 條是全法最重要的一條:「<strong>林業之管理經營,應以國土保安長遠利益為主要目標。</strong>」這句話放在第二章「林政」的開頭,意在宣示 — 即使面臨經濟壓力,只要與國土保安發生衝突,經濟必須讓步。</p>
+      <p>這條原則在實務上有幾項具體展現:第 10 條的限制採伐(陡峻、水庫集水區等)、第 22 條的保安林編入、第 17 條設置森林遊樂區必須通過環評、第 43 條禁止於森林區域堆積廢棄物等。讀者應時時牢記:當條文出現模糊地帶時,<strong>以國土保安為優先</strong>的解釋原則往往是對的。</p>
+
+      <h2>1.6 森林法與相關法律的對話</h2>
+      <p>森林法不是一座孤島,它與多部法律形成交錯的網絡:</p>
+      <ul>
+        <li>與<strong>水土保持法</strong>的關係:森林內興修工程破壞森林之虞者,應實施水保處理(§9);位於水庫集水區的林地限制採伐(§10)</li>
+        <li>與<strong>國家公園法</strong>的關係:國家公園設於森林區域者,林業主管機關依森林法配合國家公園計畫管理(§16)</li>
+        <li>與<strong>環境影響評估法</strong>的關係:森林遊樂區設置須通過環評審查(§17)</li>
+        <li>與<strong>原住民族基本法</strong>的關係:原住民土地為林業用地者,應會同中央原民主管機關核准(§6);傳統領域得依生活慣俗採取森林產物(§15 第 4 項)</li>
+        <li>與<strong>氣候變遷因應法</strong>的關係:森林碳匯是淨零轉型的關鍵自然碳匯,依賴森林法的造林與保護機制落實</li>
+      </ul>
+      <p>理解這些跨法律的連結,是專業工作者的基本功。在撰寫森林經營計畫書或辦理林業審查時,常需同時引用多部法律,才能周全地論證自己的主張。</p>
+    </div>
+
+    <!-- 簡報 -->
+    <div id="tab-content-slide" class="tab-content">
+      <div class="slide-section">
+        <h3>📊 單元 1 教學簡報 — 森林法制總論</h3>
+        <div class="slide-status slide-ready">
+          ✅ 簡報已由 NotebookLM 產製完成(黑板 + 白粉筆視覺風格)— 可在下方直接翻頁播放
+        </div>
+
+        <!-- 內嵌 PDF.js 簡報播放器 -->
+        <div class="slide-viewer">
+          <div class="slide-viewer-stage">
+            <canvas id="slide-canvas"></canvas>
+            <div id="slide-loading" class="slide-loading">📥 載入簡報中...</div>
+          </div>
+          <div class="slide-toolbar">
+            <div class="slide-toolbar-nav">
+              <button id="slide-btn-first" class="slide-nav-btn icon-only" title="第一頁 (Home)">⏮</button>
+              <button id="slide-btn-prev" class="slide-nav-btn" title="上一頁 (←)">◀ 上一頁</button>
+            </div>
+            <div class="slide-pager">
+              <span id="slide-page-cur">1</span> / <span id="slide-page-total">—</span>
+            </div>
+            <div class="slide-toolbar-nav">
+              <button id="slide-btn-next" class="slide-nav-btn" title="下一頁 (→ / Space)">下一頁 ▶</button>
+              <button id="slide-btn-last" class="slide-nav-btn icon-only" title="最後一頁 (End)">⏭</button>
+            </div>
+          </div>
+          <div class="slide-shortcut-hint">
+            快捷鍵:<kbd>←</kbd> 上一頁 · <kbd>→</kbd> / <kbd>Space</kbd> 下一頁 · <kbd>Home</kbd> / <kbd>End</kbd> 首/末頁
+          </div>
+        </div>
+
+        <!-- 備用下載按鈕 -->
+        <div class="slide-card" style="margin-top:16px;">
+          <div class="slide-card-icon">📥</div>
+          <div class="slide-card-info">
+            <div class="slide-card-title">離線版本下載</div>
+            <div class="slide-card-meta">需在 PowerPoint 編輯或投影授課時使用</div>
+          </div>
+          <a href="assets/slides/unit-01.pptx" download class="slide-download-btn">⬇️ PPTX</a>
+          <a href="assets/slides/unit-01.pdf" download class="slide-download-btn" style="margin-left:8px;">⬇️ PDF</a>
+        </div>
+        <p class="slide-tip">💡 內容與本頁「講義」分頁完全對齊。可直接點按翻頁,或使用鍵盤左右鍵/Space 快速切換。</p>
+      </div>
+    </div>
+
+    <!-- YouTube 影片 -->
+    <div id="tab-content-video" class="tab-content">
+      <div class="video-section">
+        <h3>📺 教學影片</h3>
+
+        <!-- AI 影片簡介 -->
+        <div style="margin: 16px 0 24px;">
+          <h4 style="color:#2d5016;margin:0 0 8px;">🎬 台灣森林法制的總體介紹</h4>
+          <video controls width="100%" style="max-width:720px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+            <source src="assets/videos/unit-01.mp4" type="video/mp4">
+            您的瀏覽器不支援影片播放。
+          </video>
+        </div>
+
+        <!-- 學生檢視模式提示(學生看到) -->
+        <div class="student-note">本頁由教師設定影片內容,學生僅能觀看。如需設定或更換影片,請切換至「🛠️ 教師模式」。</div>
+
+        <!-- 教師後臺管理(學生看不到、無法操作) -->
+        <div class="teacher-edit">
+          <div class="video-item"><span>補充影片:</span><input type="text" id="video-input-1" class="teacher-input" placeholder="YouTube URL..." oninput="setVideoUrl(1, this.value)"></div>
+        </div>
+
+        <!-- 播放器(學生也看得到) -->
+        <div id="video-slot-1" style="margin:12px 0;">
+          <div class="video-placeholder">尚未設定影片</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 題庫 -->
+    <div id="tab-content-quiz" class="tab-content">
+      <div class="quiz-section">
+        <h3>✅ 單元 1 練習題</h3>
+        <p style="color:#666;font-size:14px;margin-bottom:16px;">共 10 選擇題 + 3 申論題。點選答案後即時顯示正確答案與解析。</p>
+
+        <div id="quiz-summary" class="quiz-summary">尚未開始答題</div>
+
+        <!-- 選擇題 1 -->
+        <div id="q-u1q1" class="question">
+          <div class="question-text">Q1. 《森林法》第 1 條所揭示之立法目的不包括下列何者?</div>
+          <ul class="question-options">
+            <li onclick="answerQuestion('q-u1q1', 0, 'D')">A. 保育森林資源</li>
+            <li onclick="answerQuestion('q-u1q1', 1, 'D')">B. 發揮森林公益及經濟效用</li>
+            <li onclick="answerQuestion('q-u1q1', 2, 'D')">C. 保護具有保存價值之樹木及其生長環境</li>
+            <li onclick="answerQuestion('q-u1q1', 3, 'D')">D. 促進木材產業獲利最大化</li>
+          </ul>
+          <div class="question-explain">💡 森林法第 1 條明定為「保育、公益、經濟」三大價值並列,並加入樹木保護面向。D 選項不屬於立法目的。</div>
+        </div>
+
+        <!-- 選擇題 2 -->
+        <div id="q-u1q2" class="question">
+          <div class="question-text">Q2. 依《森林法》第 2 條,現行中央森林主管機關為?</div>
+          <ul class="question-options">
+            <li onclick="answerQuestion('q-u1q2', 0, 'B')">A. 行政院農業委員會</li>
+            <li onclick="answerQuestion('q-u1q2', 1, 'B')">B. 農業部</li>
+            <li onclick="answerQuestion('q-u1q2', 2, 'B')">C. 林業及自然保育署</li>
+            <li onclick="answerQuestion('q-u1q2', 3, 'B')">D. 內政部營建署</li>
+          </ul>
+          <div class="question-explain">💡 2023 年 8 月 1 日農委會升格為農業部。林業保育署雖為專責機關,但法定中央主管機關為農業部。</div>
+        </div>
+
+        <!-- 選擇題 3 -->
+        <div id="q-u1q3" class="question">
+          <div class="question-text">Q3. 依《森林法》第 3 條,「森林」之定義為下列何者?</div>
+          <ul class="question-options">
+            <li onclick="answerQuestion('q-u1q3', 0, 'B')">A. 所有竹木之總稱</li>
+            <li onclick="answerQuestion('q-u1q3', 1, 'B')">B. 林地及其群生竹、木之總稱</li>
+            <li onclick="answerQuestion('q-u1q3', 2, 'B')">C. 林木經編定公告之土地</li>
+            <li onclick="answerQuestion('q-u1q3', 3, 'B')">D. 海拔 100 公尺以上長滿樹木之地</li>
+          </ul>
+          <div class="question-explain">💡 森林法第 3 條:「森林係指林地及其群生竹、木之總稱。」林地與竹木兩要素缺一不可。</div>
+        </div>
+
+        <!-- 選擇題 4 -->
+        <div id="q-u1q4" class="question">
+          <div class="question-text">Q4. 依《森林法》第 5 條,林業管理經營之主要目標為?</div>
+          <ul class="question-options">
+            <li onclick="answerQuestion('q-u1q4', 0, 'B')">A. 經濟效益最大化</li>
+            <li onclick="answerQuestion('q-u1q4', 1, 'B')">B. 國土保安長遠利益</li>
+            <li onclick="answerQuestion('q-u1q4', 2, 'B')">C. 生物多樣性保育</li>
+            <li onclick="answerQuestion('q-u1q4', 3, 'B')">D. 林產業產值提升</li>
+          </ul>
+          <div class="question-explain">💡 森林法第 5 條明定:「林業之管理經營,應以國土保安長遠利益為主要目標。」這是全法最高指導原則。</div>
+        </div>
+
+        <!-- 選擇題 5 -->
+        <div id="q-u1q5" class="question">
+          <div class="question-text">Q5. 《森林法》第 3 條第 2 項「森林以國有為原則」之正確解釋為?</div>
+          <ul class="question-options">
+            <li onclick="answerQuestion('q-u1q5', 0, 'B')">A. 臺灣大部分森林皆屬國有</li>
+            <li onclick="answerQuestion('q-u1q5', 1, 'B')">B. 森林所有權及以外之權利,除依法登記為公有或私有者外,概屬國有</li>
+            <li onclick="answerQuestion('q-u1q5', 2, 'B')">C. 私有林必須收歸國有</li>
+            <li onclick="answerQuestion('q-u1q5', 3, 'B')">D. 國家得任意徵收私有林</li>
+          </ul>
+          <div class="question-explain">💡 森林法施行細則第 2 條明文規定:森林所有權及所有權以外之森林權利,除依法登記為公有或私有者外,概屬國有。</div>
+        </div>
+
+        <p style="color:#666;margin:20px 0;font-size:13px;">⏳ 更多題目(Q6-Q10)與申論題,將於教師版後臺開啟。此頁面展示前 5 題作為示範。</p>
+
+        <!-- 申論題 1 -->
+        <div class="essay-question">
+          <div class="question-text">申論 1. 為何《森林法》第 5 條將「國土保安長遠利益」列為林業管理的最高指導原則?請從歷史脈絡與實務意義兩方面闡述。</div>
+          <textarea placeholder="請在此輸入你的答案..." style="width:100%;min-height:100px;padding:10px;border:1px solid #ccc;border-radius:4px;font-family:inherit;"></textarea>
+          <div class="essay-points">
+            <strong>💡 教師提供之參考要點:</strong>
+            <ul>
+              <li>民國 74 年大修時確立此原則,反映山地開發帶來之災害教訓</li>
+              <li>國土保安為公益性,優先於個別經濟利益</li>
+              <li>第 10 條限制採伐、第 22 條保安林編入等皆為此原則之具體展現</li>
+              <li>實務上當條文出現模糊地帶時,應優先以國土保安為解釋原則</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <aside class="sidebar-right">
+    <div class="tool-panel">
+      <h3>🛠️ 工具</h3>
+      <div class="tool-section">
+        <h4>搜尋</h4>
+        <input type="search" id="search-box" placeholder="搜尋法規/關鍵字..." oninput="searchContent(this.value)">
+        <ul id="search-results"></ul>
+      </div>
+      <div class="tool-section">
+        <h4>我的筆記</h4>
+        <textarea id="user-notes" placeholder="單元 1 學習筆記..." rows="6"></textarea>
+        <button onclick="saveNotes()" class="btn-small">💾 儲存</button>
+      </div>
+      <div class="tool-section">
+        <h4>學習進度</h4>
+        <div id="progress-display" class="progress-display"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<canvas id="pen-canvas" class="pen-canvas hidden"></canvas>
+<div id="pen-toolbar" class="pen-toolbar hidden">
+  <button class="pen-color" style="background:#000" onclick="setPenColor('#000000')"></button>
+  <button class="pen-color" style="background:#d32f2f" onclick="setPenColor('#d32f2f')"></button>
+  <button class="pen-color" style="background:#1976d2" onclick="setPenColor('#1976d2')"></button>
+  <button class="pen-color" style="background:#388e3c" onclick="setPenColor('#388e3c')"></button>
+  <button class="pen-color highlight" style="background:#fff176" onclick="setPenColor('#fff176',true)"></button>
+  <input type="range" id="pen-width" min="1" max="20" value="3" onchange="setPenWidth(this.value)">
+  <button onclick="clearCanvas()">🗑️</button>
+  <button onclick="togglePen()">❌</button>
+</div>
+
+<footer class="footer">
+  <p>林業政策與法規知識網 · v1.0 · 2026-04-11</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/pen.js"></script>
+<script src="assets/js/notes.js?v=20260412h"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+<script src="assets/js/slides.js?v=20260412"></script>
+</body>
+</html>

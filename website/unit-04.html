@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>單元 4:林產物處分與伐採查驗 | 林業政策與法規知識網</title>
+<link rel="stylesheet" href="assets/css/main.css?v=20260412h"><link rel="stylesheet" href="assets/css/pen.css">
+<script>window.UNIT_ID = 4;</script></head>
+<body data-mode="student">
+<header class="topbar">
+  <div class="topbar-left"><h1 class="site-title"><a href="index.html" style="color:white;text-decoration:none;">🌲 林業政策與法規知識網</a></h1><span class="site-subtitle">單元 4:林產物處分與伐採查驗</span></div>
+  <div class="topbar-right">
+    <a href="index.html" class="home-btn" title="回首頁">🏠 回首頁</a>
+    <div class="mode-switch"><span class="mode-label">模式</span><button id="mode-student" class="mode-btn active" onclick="setMode('student')">👩‍🎓 學生</button><button id="mode-teacher" class="mode-btn" onclick="setMode('teacher')">👨‍🏫 教師</button></div>
+    <button class="pen-toggle" onclick="togglePen()">✏️ 畫筆</button>
+  </div>
+</header>
+<div class="layout">
+  <aside class="sidebar-left"><nav><h2>📚 課程單元</h2><ul class="unit-list">
+    <li><a href="unit-01.html" class="unit-link">單元 1<br><span>森林法制總論</span></a></li>
+    <li><a href="unit-02.html" class="unit-link">單元 2<br><span>森林法與施行細則</span></a></li>
+    <li><a href="unit-03.html" class="unit-link">單元 3<br><span>保安林制度</span></a></li>
+    <li><a href="unit-04.html" class="unit-link active">單元 4<br><span>林產物處分與伐採查驗</span></a></li>
+    <li><a href="unit-05.html" class="unit-link">單元 5<br><span>獎勵造林 2.0</span></a></li>
+    <li><a href="unit-06.html" class="unit-link">單元 6<br><span>林下經濟</span></a></li>
+    <li><a href="unit-07.html" class="unit-link">單元 7<br><span>森林遊樂與自然保護</span></a></li>
+    <li><a href="unit-08.html" class="unit-link">單元 8<br><span>森林與土地利用管制</span></a></li>
+    <li><a href="unit-09.html" class="unit-link">單元 9<br><span>原住民族林業權益</span></a></li>
+    <li><a href="unit-10.html" class="unit-link">單元 10<br><span>氣候變遷與森林碳匯</span></a></li>
+    <li style="margin-top:12px;border-top:1px dashed #d4d0c5;padding-top:12px;"><a href="case-analysis.html" class="unit-link" style="background:#2d5a3f;color:#e9c46a;border:1px solid #e9c46a;">⚖️ 案例分析器<br><span>輸入真實案例 → 法律見解</span></a></li>
+  </ul></nav></aside>
+  <main class="content">
+    <div class="unit-header"><h1>單元 4:林產物處分與伐採查驗</h1><div class="unit-subtitle">國有林林產物處分規則 · 疏伐作業 · 查驗印制度</div></div>
+    <div class="tabs">
+      <button id="tab-btn-lecture" class="tab-btn active" onclick="switchTab('lecture')">📝 講義</button>
+      <button id="tab-btn-textbook" class="tab-btn" onclick="switchTab('textbook')">📚 課本</button>
+      <button id="tab-btn-slide" class="tab-btn" onclick="switchTab('slide')">📊 簡報</button>
+      <button id="tab-btn-video" class="tab-btn" onclick="switchTab('video')">📺 影片</button>
+      <button id="tab-btn-quiz" class="tab-btn" onclick="switchTab('quiz')">✅ 題庫</button>
+    </div>
+    <div id="tab-content-lecture" class="tab-content active lecture-body">
+      <h2>學習目標</h2>
+      <ol>
+        <li>掌握國有林林產物處分規則的三大處分方式與流程</li>
+        <li>熟悉材積調查(每木調查、取樣調查)與查驗印制度</li>
+        <li>理解國有人工林疏伐作業規範之分區原則與疏伐方法</li>
+        <li>掌握採取許可證與搬運許可證制度</li>
+        <li>瞭解國有林事業區出租造林地管理要點</li>
+      </ol>
+
+      <h2>4-1 法源與定義</h2>
+      <ul>
+        <li><strong>法源</strong>:森林法第 15 條第 3 項授權,訂定《國有林林產物處分規則》(民國 102 年 12 月 6 日修正)</li>
+        <li><strong>林產物分類</strong>(§3):
+          <ul>
+            <li><strong>主產物</strong>:生立、枯損、倒伏之<strong>竹木</strong>及餘留之<strong>根株、殘材</strong></li>
+            <li><strong>副產物</strong>:樹皮、樹脂、種實、落枝、樹葉、灌藤、<strong>竹筍</strong>、草類、<strong>菌類</strong>及其他</li>
+          </ul>
+        </li>
+        <li><strong>原則</strong>:除契約另有約定外,<strong>不得採取根部</strong>;處分後餘留之根株、殘材<strong>以不採取為原則</strong>。</li>
+      </ul>
+
+      <h2>4-2 三大處分方式(§4)</h2>
+      <ol>
+        <li><strong>直營</strong>:機關依事業區經營計畫及年度採伐計畫,直接採取</li>
+        <li><strong>標售</strong>:指定區域公告投標採取</li>
+        <li><strong>專案核准</strong>:不適於標售者(如公務自用、搶修災害、原住民自用、打撈漂流木等 12 款)</li>
+      </ol>
+
+      <h2>4-3 年度採伐計畫(§5)</h2>
+      <ul>
+        <li>每年編具,層報中央主管機關核定後公告</li>
+        <li>應包括:採伐位置、面積、樹種、作業方式</li>
+        <li><strong>絕對禁止處分</strong>:林地難於復舊造林或採伐有妨礙水土保持之虞者</li>
+      </ul>
+
+      <h2>4-4 材積調查方法(伐採查驗作業要點)</h2>
+      <ul>
+        <li><strong>每木調查</strong>適用對象:
+          <ul>
+            <li>天然針葉樹及天然闊葉樹林木</li>
+            <li>擇伐林木</li>
+            <li>具標售價值之造林疏伐木</li>
+            <li>作業障礙木及附帶用材</li>
+            <li>被害木</li>
+          </ul>
+        </li>
+        <li><strong>取樣調查</strong>適用對象:造林木</li>
+        <li><strong>免調查</strong>:胸高直徑未滿 10 公分之天然林或未滿 6 公分之擇伐林木</li>
+      </ul>
+
+      <h2>4-5 立木材積公式</h2>
+      <ul>
+        <li>特定樹種(杉木、柳杉、琉球松、臺灣二葉松、相思樹、樟楠類、櫧櫟類):依立木材積表</li>
+        <li>一般樹種:<strong>V = DBH² × 0.79 × H × F</strong>(F 為形數,未列表者定為 0.45)</li>
+        <li><strong>胸高直徑</strong>:離地面(坡地以上坡處)1.3 公尺處之連皮直徑</li>
+        <li><strong>查驗印制度</strong>:每木調查後,需在林木根株易見部分加蓋查驗印;胸徑未達 20 公分者得分級別統一編號;皆伐造林木及殘材調查可免加蓋。</li>
+      </ul>
+
+      <h2>4-6 材種區分基準</h2>
+      <ul>
+        <li><strong>普通原木</strong>:末徑 ≥ 20 公分,材長 ≥ 2 公尺</li>
+        <li><strong>短尺原木</strong>:末徑 ≥ 20 公分,材長 &lt; 2 公尺</li>
+        <li><strong>小徑原木</strong>:末徑 &lt; 20 公分,材長 ≥ 2 公尺</li>
+        <li><strong>薪材/枝梢材</strong>:末徑 &lt; 20 公分,材長 &lt; 2 公尺</li>
+        <li><strong>天然生闊葉樹 DBH ≥ 22 公分 或 闊葉樹造林木 DBH ≥ 16 公分以上</strong>以用材計算</li>
+      </ul>
+
+      <h2>4-7 標售流程</h2>
+      <ol>
+        <li>管理經營機關先期公告(位置、面積、材積、樹種、作業方式、採運期限、投標地點)</li>
+        <li>投標人資格:
+          <ul>
+            <li>領有伐木業務執照</li>
+            <li><strong>資本額 ≥ 300 萬元</strong></li>
+            <li>負責人未破產</li>
+            <li><strong>須聘林業技師或森林系畢業、具 2~6 年林產業務經驗者</strong></li>
+          </ul>
+        </li>
+        <li>通訊標售,雙層密封投標</li>
+        <li>開標日上午 9:30 主標監標人親自提取標函</li>
+        <li>得標後於 30 日內一次繳清價款,未依限繳者取消得標資格並沒收押標金</li>
+        <li>繳清後 7 日內簽訂採運契約,領取採取許可證或搬運許可證</li>
+      </ol>
+
+      <h2>4-8 林產物價金計算公式(§19)</h2>
+      <p><strong>林產物價金 = 林產物總市價 / (1 + 利潤率 + 資金利率) - 生產費</strong></p>
+      <ul>
+        <li><strong>利潤率</strong>:10% ~ 15%</li>
+        <li><strong>資金利率</strong>:參酌銀行牌告利率</li>
+        <li><strong>障礙木例外</strong>:伐木、造林障礙木不計算資金利率;探採礦/公共工程障礙木不計算利潤率及資金利率</li>
+      </ul>
+
+      <h2>4-9 採取許可證三種格式</h2>
+      <ul>
+        <li><strong>甲式:主產物-木</strong>(白底綠字)</li>
+        <li><strong>乙式:主產物-竹</strong>(白底黑字)</li>
+        <li><strong>丙式:副產物</strong>(白底紅字)</li>
+        <li><strong>搬運許可證</strong>:無需伐採者發給</li>
+      </ul>
+
+      <h2>4-10 現場作業五大禁止事項(§26)</h2>
+      <ol>
+        <li>破壞水土保持</li>
+        <li>損害他人竹木或工作物</li>
+        <li>毀損或移動伐採區內設置之界木或境界標識</li>
+        <li>採取經政府規定或點記保留之竹木</li>
+        <li><strong>盜伐、擅伐林產物</strong></li>
+      </ol>
+
+      <h2>4-11 期限展延制度(§29、§30)</h2>
+      <ul>
+        <li>期限屆滿前 1 個月提出書面申請</li>
+        <li>須繳納<strong>延期金</strong></li>
+        <li><strong>延期日數不得超過原契約期間的二分之一</strong></li>
+        <li>延期金公式:<strong>延期金 = 原核定總價 × (賸餘利用材積 / 准許利用材積) × (1/1000) × 延期日數</strong></li>
+      </ul>
+
+      <h2>4-12 國有人工林疏伐作業規範重點</h2>
+      <h3>疏伐效益</h3>
+      <ol>
+        <li>改善林木生長及形質</li>
+        <li>形成喬木、灌木、地被多層次,緩衝降雨沖蝕</li>
+        <li>增加生物多樣性</li>
+        <li>提高土壤溫度變化與腐植層分解</li>
+        <li><strong>留存生長旺盛林木,提升 CO2 吸存</strong></li>
+        <li>提供野生動物棲息場所</li>
+        <li>減少病蟲害</li>
+      </ol>
+
+      <h3>林分分區經營目標</h3>
+      <table>
+        <tr><th>分區</th><th>海拔/坡度</th><th>疏伐原則</th></tr>
+        <tr><td><strong>林木經營區</strong></td><td>≤2500 m、≤35°、I/II/III 級地</td><td>集約經營,依樹種、密度採不同疏伐方式</td></tr>
+        <tr><td><strong>森林育樂區</strong></td><td>—</td><td>以景觀為目的,<strong>下層中度以下疏伐</strong></td></tr>
+        <tr><td><strong>國土保安區</strong></td><td>—</td><td><strong>原則不疏伐</strong>;老化純林可採弱度下層疏伐或孔隙疏伐</td></tr>
+        <tr><td><strong>自然保護區</strong></td><td>—</td><td><strong>禁止疏伐</strong></td></tr>
+      </table>
+
+      <h3>疏伐種類</h3>
+      <ol>
+        <li><strong>下層疏伐</strong>:淘汰下層被壓劣勢木</li>
+        <li><strong>上層疏伐</strong>:伐除部分樹冠擴張優勢木及樹幹彎曲分叉之上層木</li>
+        <li><strong>機械疏伐</strong>(空間/行列):依固定距離或行間距離</li>
+        <li><strong>選擇疏伐</strong>:依特定經營目的</li>
+        <li><strong>孔隙或塊狀疏伐</strong>:孔隙直徑約為樹高 1~2 倍;總疏伐孔隙面積占總面積 25%~40%</li>
+      </ol>
+
+      <h3>最適株距</h3>
+      <table>
+        <tr><th>樹種類型</th><th>株距占樹高百分比</th></tr>
+        <tr><td>針葉樹(臺灣杉、柳杉、紅檜、肖楠、杉木)</td><td><strong>20%~30%</strong></td></tr>
+        <tr><td>闊葉樹(烏心石、光蠟樹、樟樹、櫸木、相思樹)</td><td><strong>30%~45%</strong></td></tr>
+      </table>
+
+      <h3>抗風性考量</h3>
+      <ul>
+        <li>形狀比(樹高/直徑) <strong>&gt; 100</strong>:抗風弱,疏伐宜弱,保留較多株數</li>
+        <li>形狀比 <strong>&lt; 70</strong>:抗風強,可施行較強度疏伐</li>
+        <li><strong>避免在颱風季節施行疏伐</strong></li>
+      </ul>
+
+      <h2>4-13 國有林事業區出租造林地管理要點</h2>
+      <ul>
+        <li><strong>租期</strong>:參照造林木伐期訂定,<strong>每一期不得超過 10 年</strong>,屆滿無違規可續租</li>
+        <li><strong>政策性終止</strong>:林業署因政策需要停止出租時,得終止租約,租地造林人不得異議</li>
+        <li><strong>終止租約事由</strong>:契約成立後一年未開始造林、成活率未達 70%、擅自砍伐、濫墾盜伐、轉租等 9 款</li>
+        <li><strong>林產物分收</strong>(政府:承租人):
+          <ul>
+            <li>林木皆伐:每公頃繳納 <strong>3000 元</strong> 計收</li>
+            <li>林木疏伐/擇伐:每公頃 <strong>1000 元</strong></li>
+            <li>果實:<strong>政府 20% / 承租人 80%</strong></li>
+            <li>竹筍:<strong>政府 10% / 承租人 90%</strong></li>
+          </ul>
+        </li>
+        <li><strong>需核准後始得實施</strong>:主伐/間伐、撫育除伐、設置或廢止林道防火線工寮等附屬工事</li>
+      </ul>
+
+      <h2>延伸閱讀</h2>
+      <ul>
+        <li>國有林林產物處分規則(全國法規資料庫)</li>
+        <li>國有人工林疏伐作業規範(林業保育署)</li>
+        <li>國有林事業區出租造林地管理要點(林業保育署)</li>
+      </ul>
+
+      <h2>課後思考</h2>
+      <ol>
+        <li>為什麼國有林林產物處分原則上「不得採取根部」?這與生態或水土保持的關聯為何?</li>
+        <li>疏伐作業在不同分區(林木經營、森林育樂、國土保安、自然保護)採取不同策略,背後的生態經營邏輯是什麼?</li>
+        <li>國有林出租造林地為何要分收林產物而非全額給予承租人?這是否符合「使用者付費」與「公共財共享」原則?</li>
+      </ol>
+    </div>
+    <div id="tab-content-textbook" class="tab-content lecture-body">
+      <h2>4.1 處分原則:嚴格的三道關卡</h2>
+      <p>《國有林林產物處分規則》的核心精神,是把林產物當作「國家公共財產」來管理。每一筆處分都必須通過三道關卡:</p>
+      <ol>
+        <li><strong>年度採伐計畫</strong>(依事業區經營計畫編具,層報中央核定公告)</li>
+        <li><strong>實地調查</strong>(位置、面積、樹種、材積、生產條件)</li>
+        <li><strong>處分許可</strong>(直營、標售或專案核准)</li>
+      </ol>
+      <p>這三道關卡的設計,目的是防止濫伐與不當處分。第 5 條更明定:「<strong>林地難於復舊造林或採伐有妨礙水土保持之虞者,其竹木不得予以處分。</strong>」這是生態優先的最後防線。</p>
+
+      <h2>4.2 主產物與副產物的區分</h2>
+      <p>第 3 條將林產物分為兩類:</p>
+      <ul>
+        <li><strong>主產物</strong>:生立、枯損、倒伏之竹木及餘留之根株、殘材</li>
+        <li><strong>副產物</strong>:樹皮、樹脂、種實、落枝、樹葉、灌藤、<strong>竹筍、草類、菌類</strong>及其他</li>
+      </ul>
+      <p>這個區分在實務上有重要意義。主產物的處分需經嚴格的材積調查與標售程序,副產物則可透過專案核准或直接採取。注意到<strong>竹筍、菌類</strong>被明確歸為副產物,這是後來「林下經濟」得以在林業用地上合法經營的法源依據 — 因為採集段木香菇、金線連、竹筍等屬於「副產物採取」,而非「林業用地變更使用」。</p>
+      <p>第 8 條還有一個重要原則:<strong>除契約另有約定外,不得採取根部</strong>,處分後餘留之根株、殘材以不採取為原則。這個原則的生態意義重大 — 保留根系可以穩固土壤、防止水土流失、讓伐採跡地更容易天然更新。</p>
+
+      <h2>4.3 三大處分方式</h2>
+      <p>第 4 條規定處分方式有三種:</p>
+      <ul>
+        <li><strong>直營</strong>:管理經營機關依照年度採伐計畫,自己直接採取</li>
+        <li><strong>標售</strong>:依計畫指定區域公告讓民間業者投標採取</li>
+        <li><strong>專案核准</strong>:不適於標售者,如搶修災害、原住民自用、打撈漂流木、公務自用、試驗研究等</li>
+      </ul>
+      <p>第 14 條列舉了 12 款得專案核准的情形,其中第 8 款「<strong>原住民為生產上之必要,其建造自住房屋、自用家具及農具用材</strong>須用者」特別值得關注 — 這是對原住民族傳統生活需要的保留,不需經標售程序。</p>
+
+      <h2>4.4 材積調查的兩種方法</h2>
+      <p>《農業部辦理國有林林產物處分暨伐採查驗作業要點》規範了材積調查的方式:</p>
+      <ul>
+        <li><strong>每木調查</strong>:適用於天然針葉樹、天然闊葉樹、擇伐林木、具標售價值之造林疏伐木、作業障礙木、被害木</li>
+        <li><strong>取樣調查</strong>:適用於造林木</li>
+      </ul>
+      <p>每木調查極為嚴謹,需測量每一棵樹的胸高直徑(DBH,離地 1.3 公尺處連皮直徑)與樹高,計算立木材積。公式為:</p>
+      <p><strong>V = DBH² × 0.79 × H × F</strong></p>
+      <p>其中 F 為形數,未列表者定為 0.45。對於杉木、柳杉、琉球松、臺灣二葉松、相思樹、樟楠類及櫧櫟類等常見樹種,則有專用的立木材積表可直接查閱。</p>
+      <p>每木調查後,必須在林木根株易見部分<strong>加蓋查驗印</strong>,胸徑未達 20 公分者得分級別統一編號。這顆查驗印是整個伐採制度的「認證標章」 — 沒有查驗印的木材,在檢查站會被攔截,運輸者將面臨刑事追訴。</p>
+
+      <h2>4.5 標售的嚴格門檻</h2>
+      <p>標售投標人的資格門檻相當高(§投標須知第 3 條):</p>
+      <ol>
+        <li>領有經營伐木業務執照及營利事業登記之公司、行號</li>
+        <li><strong>資本額新臺幣 300 萬元以上</strong></li>
+        <li>負責人未經宣告破產或受禁治產宣告</li>
+        <li>負責人或聘用人員具備林業技師、森林系畢業、高等考試林業科及格等專業資格之一</li>
+      </ol>
+      <p>這套資格條件確保了投標人具備基本的財務能力與技術能力。無此門檻,盜伐集團可能透過空殼公司投標,破壞標售制度的完整性。</p>
+      <p>林產物的價金計算公式採<strong>淨現值法</strong>(§19):</p>
+      <p><strong>林產物價金 = 林產物總市價 / (1 + 利潤率 + 資金利率) - 生產費</strong></p>
+      <p>利潤率為 10%~15%,資金利率參酌銀行牌告利率。這個公式的意思是:政府出售林產物的價金,是從市價扣除業者合理利潤、資金成本與生產費後的餘額。業者的利潤空間被明確界定,防止暴利或低價賤賣。</p>
+
+      <h2>4.6 疏伐作業的分區原則</h2>
+      <p>《國有人工林疏伐作業規範》對國有林的疏伐作業提出了<strong>分區經營</strong>的架構,將國有林分為四類:</p>
+      <ul>
+        <li><strong>林木經營區</strong>:以生產木材為主,採集約經營</li>
+        <li><strong>森林育樂區</strong>:以景觀為目的,採下層中度以下疏伐</li>
+        <li><strong>國土保安區</strong>:<strong>原則不予疏伐</strong>,惟老化純林可採弱度下層疏伐或孔隙疏伐</li>
+        <li><strong>自然保護區</strong>:維護原始風貌,<strong>禁止疏伐</strong></li>
+      </ul>
+      <p>這個分區架構體現了「<strong>一林多用</strong>」的概念 — 同一片國有林,依其功能屬性採取不同的經營強度。這比傳統「全面疏伐」或「全面禁伐」的二元思維更精細、更符合生態現實。</p>
+      <p>疏伐強度的決定,則考量樹種特性(針葉樹株距為樹高 20~30%、闊葉樹 30~45%)、抗風性(形狀比超過 100 者疏伐宜弱)、生育地條件、林齡等因子。這些規定提供了實務操作的具體指標。</p>
+
+      <h2>4.7 出租造林地:政府與承租人的分收合作</h2>
+      <p>《國有林事業區出租造林地管理要點》規範了國有林出租給民間造林的制度。這套制度本質上是「政府出地,民間出勞力,分收成果」的合作模式。</p>
+      <p>租期原則上不超過 10 年,屆滿無違規可續租。林產物的分收比例如下:林木皆伐每公頃繳納 3000 元、疏伐或擇伐 1000 元;果實則依政府 20%、承租人 80% 比率分配;竹筍則 10% vs 90%。這個分配偏向承租人,反映了政府鼓勵民間參與造林的政策意圖。</p>
+      <p>但承租人也有多項義務:造林、補植、除草撫育、預防森林火災、防制病蟲害、設置境界標誌等。若違反這些義務或擅自砍伐、轉租、種植農作物等,林業署得終止租約,將地上物收歸國有。</p>
+    </div>
+    <div id="tab-content-slide" class="tab-content"><div class="slide-section"><h3>📊 單元 4 教學簡報 — 林產物處分與伐採查驗</h3><div class="slide-status slide-ready">✅ 簡報已由 NotebookLM 產製完成 — 可在下方直接翻頁播放</div><div class="slide-viewer"><div class="slide-viewer-stage"><canvas id="slide-canvas"></canvas><div id="slide-loading" class="slide-loading">📥 載入簡報中...</div></div><div class="slide-toolbar"><div class="slide-toolbar-nav"><button id="slide-btn-first" class="slide-nav-btn icon-only" title="第一頁">⏮</button><button id="slide-btn-prev" class="slide-nav-btn" title="上一頁">◀ 上一頁</button></div><div class="slide-pager"><span id="slide-page-cur">1</span> / <span id="slide-page-total">—</span></div><div class="slide-toolbar-nav"><button id="slide-btn-next" class="slide-nav-btn" title="下一頁">下一頁 ▶</button><button id="slide-btn-last" class="slide-nav-btn icon-only" title="最後一頁">⏭</button></div></div><div class="slide-shortcut-hint">快捷鍵:<kbd>←</kbd> <kbd>→</kbd> <kbd>Space</kbd> <kbd>Home</kbd> <kbd>End</kbd></div></div><div class="slide-card" style="margin-top:16px;"><div class="slide-card-icon">📥</div><div class="slide-card-info"><div class="slide-card-title">離線版本下載</div><div class="slide-card-meta">黑板粉筆風格 · 疏伐/查驗印 · 預留 YouTube 版位</div></div><a href="assets/slides/unit-04.pptx" download class="slide-download-btn">⬇️ PPTX</a><a href="assets/slides/unit-04.pdf" download class="slide-download-btn" style="margin-left:8px;">⬇️ PDF</a></div></div></div>
+    <div id="tab-content-video" class="tab-content"><div class="video-section"><h3>📺 教學影片</h3><div style="margin:16px 0 24px;"><h4 style="color:#2d5016;margin:0 0 8px;">🎬 一棵樹的法律之旅：從森林到家具</h4><video controls width="100%" style="max-width:720px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);"><source src="assets/videos/unit-04.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video></div><div class="student-note">本頁由教師設定影片內容,學生僅能觀看。如需設定或更換影片,請切換至「🛠️ 教師模式」。</div><div class="teacher-edit"><div class="video-item"><span>影片 1:</span><input type="text" id="video-input-1" class="teacher-input" placeholder="YouTube URL..." oninput="setVideoUrl(1, this.value)"></div></div><div id="video-slot-1" style="margin:12px 0;"><div class="video-placeholder">尚未設定影片</div></div></div></div>
+    <div id="tab-content-quiz" class="tab-content">
+      <div class="quiz-section">
+        <h3>✅ 單元 4 練習題</h3>
+        <div id="quiz-summary" class="quiz-summary">尚未開始答題</div>
+        <div id="q-u4q1" class="question"><div class="question-text">Q1. 依《國有林林產物處分規則》,「主產物」**不包括**下列何者?</div><ul class="question-options">
+          <li onclick="answerQuestion('q-u4q1',0,'C')">A. 生立之竹木</li>
+          <li onclick="answerQuestion('q-u4q1',1,'C')">B. 枯損倒伏之竹木</li>
+          <li onclick="answerQuestion('q-u4q1',2,'C')">C. 樹皮與樹脂</li>
+          <li onclick="answerQuestion('q-u4q1',3,'C')">D. 餘留之根株、殘材</li>
+        </ul><div class="question-explain">💡 樹皮、樹脂屬副產物。</div></div>
+        <div id="q-u4q2" class="question"><div class="question-text">Q2. 國有林林產物標售之投標人資本額門檻為?</div><ul class="question-options">
+          <li onclick="answerQuestion('q-u4q2',0,'B')">A. 100 萬元以上</li>
+          <li onclick="answerQuestion('q-u4q2',1,'B')">B. 300 萬元以上</li>
+          <li onclick="answerQuestion('q-u4q2',2,'B')">C. 500 萬元以上</li>
+          <li onclick="answerQuestion('q-u4q2',3,'B')">D. 1000 萬元以上</li>
+        </ul><div class="question-explain">💡 資本額新臺幣 300 萬元以上。</div></div>
+        <div id="q-u4q3" class="question"><div class="question-text">Q3. 胸高直徑(DBH)之測定位置為?</div><ul class="question-options">
+          <li onclick="answerQuestion('q-u4q3',0,'B')">A. 地面</li>
+          <li onclick="answerQuestion('q-u4q3',1,'B')">B. 離地面 1.3 公尺(坡地以上坡處為準)</li>
+          <li onclick="answerQuestion('q-u4q3',2,'B')">C. 離地面 1.5 公尺</li>
+          <li onclick="answerQuestion('q-u4q3',3,'B')">D. 第一個側枝之下</li>
+        </ul><div class="question-explain">💡 胸高直徑定為立木離地面 1.3 公尺處之連皮直徑。</div></div>
+        <div id="q-u4q4" class="question"><div class="question-text">Q4. 疏伐作業中,針葉樹之適當株距約為樹高之?</div><ul class="question-options">
+          <li onclick="answerQuestion('q-u4q4',0,'B')">A. 10~15%</li>
+          <li onclick="answerQuestion('q-u4q4',1,'B')">B. 20~30%</li>
+          <li onclick="answerQuestion('q-u4q4',2,'B')">C. 40~50%</li>
+          <li onclick="answerQuestion('q-u4q4',3,'B')">D. 60~70%</li>
+        </ul><div class="question-explain">💡 針葉樹 20~30%,闊葉樹 30~45%。</div></div>
+        <div id="q-u4q5" class="question"><div class="question-text">Q5. 國有林事業區出租造林地之租期每期最長為?</div><ul class="question-options">
+          <li onclick="answerQuestion('q-u4q5',0,'B')">A. 5 年</li>
+          <li onclick="answerQuestion('q-u4q5',1,'B')">B. 10 年</li>
+          <li onclick="answerQuestion('q-u4q5',2,'B')">C. 20 年</li>
+          <li onclick="answerQuestion('q-u4q5',3,'B')">D. 30 年</li>
+        </ul><div class="question-explain">💡 每一期不得超過 10 年,屆滿無違規可續租。</div></div>
+        <p style="color:#666;margin-top:16px;font-size:13px;">⏳ 完整題庫請見 <a href="assets/resources/03_題庫.json" target="_blank">題庫 JSON</a>。</p>
+      </div>
+    </div>
+  </main>
+  <aside class="sidebar-right"><div class="tool-panel"><h3>🛠️ 工具</h3>
+    <div class="tool-section"><h4>搜尋</h4><input type="search" id="search-box" placeholder="關鍵字..." oninput="searchContent(this.value)"><ul id="search-results"></ul></div>
+    <div class="tool-section"><h4>我的筆記</h4><textarea id="user-notes" placeholder="單元 4 筆記..." rows="6"></textarea><button onclick="saveNotes()" class="btn-small">💾 儲存</button></div>
+    <div class="tool-section"><h4>學習進度</h4><div id="progress-display" class="progress-display"></div></div>
+  </div></aside>
+</div>
+<canvas id="pen-canvas" class="pen-canvas hidden"></canvas>
+<div id="pen-toolbar" class="pen-toolbar hidden">
+  <button class="pen-color" style="background:#000" onclick="setPenColor('#000000')"></button>
+  <button class="pen-color" style="background:#d32f2f" onclick="setPenColor('#d32f2f')"></button>
+  <button class="pen-color" style="background:#1976d2" onclick="setPenColor('#1976d2')"></button>
+  <button class="pen-color" style="background:#388e3c" onclick="setPenColor('#388e3c')"></button>
+  <button class="pen-color highlight" style="background:#fff176" onclick="setPenColor('#fff176',true)"></button>
+  <input type="range" id="pen-width" min="1" max="20" value="3" onchange="setPenWidth(this.value)">
+  <button onclick="clearCanvas()">🗑️</button><button onclick="togglePen()">❌</button>
+</div>
+<footer class="footer"><p>林業政策與法規知識網 · v1.0 · 2026-04-11</p></footer>
+<script src="assets/js/main.js"></script><script src="assets/js/pen.js"></script><script src="assets/js/notes.js?v=20260412h"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script><script src="assets/js/slides.js?v=20260412"></script>
+</body></html>

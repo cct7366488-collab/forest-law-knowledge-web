@@ -1,0 +1,28 @@
+{
+  "notebook_id": "753913ab-fae8-4145-8060-3a1f0a16a3ac",
+  "slides": {
+    "unit-01": "1885036c-0dd0-4fcb-911a-3471861f95d4",
+    "unit-02": "7461c66a-70f8-436c-92dc-2f41a2a7d9d4",
+    "unit-03": "4d20837a-35db-4127-9bbf-a1263401769f",
+    "unit-04": "80f4728f-3ade-488a-a9b5-36a8dfc644d3",
+    "unit-05": null,
+    "unit-06": null,
+    "unit-07": null,
+    "unit-08": null,
+    "unit-09": null,
+    "unit-10": null
+  },
+  "videos": {
+    "unit-01": "364c7323-7068-4236-bc06-b5c5134c95ff",
+    "unit-02": "aa3556be-f077-40f8-b8db-929877381c14",
+    "unit-03": "495d109f-6fd2-4fd7-9f1d-8ab0ff8bf421",
+    "unit-04": "0fc4eca1-2f17-43d3-830c-7210afe73835",
+    "unit-05": "6650a842-5806-4dcb-8599-637ab76036fa",
+    "unit-06": "e5853ee4-3d50-4f89-8af2-b638ca5cadcc",
+    "unit-07": "9ae96080-584b-4466-958a-e79fa4b1a8aa",
+    "unit-08": "2746197d-9230-45f2-b8e7-6f321d875cad",
+    "unit-09": "c5a14667-4d6b-422e-b3fe-95f1529f7314",
+    "unit-10": "d7b579aa-bc36-46ad-9196-d988dde310d4"
+  },
+  "old_slides_keep_one_as_course_overview": "a57acefa-34c9-446d-946e-f420f7c708b2"
+}
