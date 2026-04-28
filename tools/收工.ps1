@@ -19,7 +19,7 @@ param(
   [string]$Message = ""
 )
 
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = "Continue"  # 原生命令 (git/robocopy) 的 stderr 在 PS 5.1 會誤觸 ErrorRecord，故不用 Stop
 
 # 路徑常數
 $ProjectRoot   = "C:\Users\cct\森林經營專業知識網\林業政策與相關法規"
@@ -51,7 +51,7 @@ Set-Location $ProjectRoot
 # ============================================================
 Write-Step "1/3" "GitHub  →  forest-law-knowledge-web"
 
-$gitStatus = git status --porcelain 2>$null
+$gitStatus = git status --porcelain
 if (-not $gitStatus) {
   Write-Host "  ℹ 無變更，跳過 commit。" -ForegroundColor Yellow
 } else {
@@ -65,12 +65,22 @@ if (-not $gitStatus) {
 
   git add -A
   git commit -m $Message | Out-Null
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "  ❌ commit 失敗（exit $LASTEXITCODE）" -ForegroundColor Red
+    return
+  }
   Write-Host "  ✓ commit: $Message" -ForegroundColor Green
 }
 
 Write-Host "  推送到遠端..." -ForegroundColor Gray
-git push origin main 2>&1 | Where-Object { $_ -notmatch "^remote: warning|^remote:\s*$" } | Select-Object -Last 4 | ForEach-Object { Write-Host "    $_" -ForegroundColor DarkGray }
-Write-Host "  ✓ GitHub 同步完成" -ForegroundColor Green
+# 注意：不可用 2>&1，PS 5.1 會把 git 的 stderr 進度訊息當成 ErrorRecord
+git push origin main
+if ($LASTEXITCODE -eq 0) {
+  Write-Host "  ✓ GitHub 同步完成" -ForegroundColor Green
+} else {
+  Write-Host "  ❌ git push 失敗（exit $LASTEXITCODE）" -ForegroundColor Red
+  return
+}
 
 # ============================================================
 #  Step 2: Obsidian (僅 .md，鏡像模式)
