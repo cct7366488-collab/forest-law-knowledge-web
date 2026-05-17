@@ -32,3 +32,7 @@ serviceAccount*.json
 *-firebase-adminsdk-*.json
 .firebase/
 firebase-debug.log
+
+# 完整題庫（含解答）改為 Firestore 教師專屬，永不再進公開 repo（Phase 2，2026-05-17）
+03_題庫.json
+website/assets/resources/03_題庫.json

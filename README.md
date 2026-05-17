@@ -30,7 +30,7 @@
 - **課本文章**：敘述式教科書，適合深度自學
 - **黑板風簡報**：由 NotebookLM 產生，每單元配示意圖（PDF / PPTX）
 - **AI 影片簡介**：每單元一支由 NotebookLM 產生的中文影片
-- **互動題庫**：100 選擇題即時批改 + 30 申論題要點
+- **互動題庫**：單元頁內嵌選擇題即時批改（形成性自測）；完整 100 選擇 + 30 申論（含解答/解析/申論要點）為**教師專屬**，僅授權教師可於教師後臺取得
 - **案例分析器**：輸入真實案例自動產出結構化法律見解
 - **34 部法規清單**：森林核心法規架構速查
 - **科普文章**：白話版森林法規入門
@@ -51,11 +51,11 @@
 │       ├── js/                       # 互動腳本（含畫筆、筆記、題庫）
 │       ├── slides/                   # NotebookLM 簡報（PDF/PPTX）
 │       ├── videos/                   # AI 影片簡介（MP4）
-│       └── resources/                # Markdown 來源檔與題庫 JSON
+│       └── resources/                # Markdown 來源檔（完整題庫 JSON 已移除，改 Firestore 教師專屬）
 ├── 00_法規清單與架構.md                  # 34 部法規清單
 ├── 01_講義_林業政策與相關法規_完整版.md       # 完整講義（10 單元）
 ├── 02_課本文章_林業政策與相關法規_完整版.md    # 完整課本（10 單元）
-├── 03_題庫.json                      # 互動題庫資料（130 題）
+│  （03_題庫.json 完整題庫已自 repo 移除 → Firestore forest-law_quiz 教師專屬）
 └── 04_科普文章_森林法規入門.md            # 白話版科普文章
 ```
 
@@ -96,7 +96,10 @@ python -m http.server 8000
 |------|------|--------|
 | 補充影片 | 各單元設定 YouTube；全體學生同步看到同一支 | 公開可讀 |
 | 申論參考要點 | 各單元申論題標準答案/評分要點 | **不可讀取**（不在公開 HTML，僅授權教師可取） |
+| 完整題庫 | 100 選擇 + 30 申論完整含解答；可匯入/檢視/下載 | **不可讀取**（已自公開 repo 移除，僅 Firestore 教師專屬） |
 | 教師白名單 | Owner 增刪授權教師 | 不適用 |
+
+> 首次題庫匯入：Owner 登入後臺「完整題庫」區，上傳本機 `03_題庫.json`（已備份於 `C:\Users\cct\firebase-teaching-tools\forest-law_題庫_seed.json`）即寫入 Firestore。之後維護均於後臺進行。
 
 ### 本地 → 雲端對應表（Cloud.md〔陸、四〕必備）
 
@@ -107,6 +110,7 @@ python -m http.server 8000
 | 補充影片 | `forest-law_videos/{unit-01..10}` | 公開 | 授權教師 |
 | 申論參考要點 | `forest-law_essays/{unit-01..10}` | 授權教師 | 授權教師 |
 | 站台設定 | `forest-law_settings/{doc}` | 公開 | 授權教師 |
+| 完整題庫（含解答） | `forest-law_quiz/bank` | 授權教師 | 授權教師 |
 | 教師白名單 | `forest-law_teachers/{email}` | 已登入 | 僅 Owner |
 
 - Web config（`assets/js/firebase-config.js`）為用戶端公開識別碼，非機密；安全邊界由 Firestore Rules 強制。

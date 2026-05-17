@@ -66,8 +66,95 @@
 
     buildVideos();
     buildEssayUnitPicker();
+    loadQuizInfo();
     if (access.owner) loadTeachers();
   }
+
+  /* ---------- 區塊 B2：完整題庫 ---------- */
+  var QUIZ_DOC = 'bank';
+
+  function quizSummary(obj) {
+    var mcq = 0, essay = 0, units = 0;
+    if (obj && Array.isArray(obj.units)) {
+      units = obj.units.length;
+      obj.units.forEach(function (u) {
+        if (Array.isArray(u.mcq)) mcq += u.mcq.length;
+        if (Array.isArray(u.essay)) essay += u.essay.length;
+      });
+    }
+    return { units: units, mcq: mcq, essay: essay };
+  }
+
+  function loadQuizInfo() {
+    var box = $('adm-quiz-info');
+    box.textContent = '⏳ 載入中…';
+    window.fbDb.collection(FL_COL_QUIZ).doc(QUIZ_DOC).get().then(function (s) {
+      if (!s.exists || !s.data().json) {
+        box.innerHTML = '⚠️ 尚未匯入題庫。請選擇本機 <code>03_題庫.json</code> 後按「匯入 / 覆蓋題庫」。';
+        return;
+      }
+      var d = s.data();
+      var sm = quizSummary(JSON.parse(d.json));
+      var who = d.updatedBy ? esc(d.updatedBy) : '—';
+      box.innerHTML = '✅ 已匯入：' + sm.units + ' 單元 · ' + sm.mcq +
+        ' 選擇題 · ' + sm.essay + ' 申論題（最後更新者：' + who + '）';
+    }).catch(function (e) {
+      box.innerHTML = '<span class="adm-err">讀取失敗：' + esc(e.code || e.message) + '</span>';
+    });
+  }
+
+  window.flImportQuiz = function () {
+    var st = $('adm-quiz-status');
+    var fileEl = $('adm-quiz-file');
+    var f = fileEl.files && fileEl.files[0];
+    if (!f) { st.textContent = '❌ 請先選擇 JSON 檔'; return; }
+    st.textContent = '⏳ 讀檔中…';
+    var reader = new FileReader();
+    reader.onload = function () {
+      var raw = String(reader.result || '');
+      var obj;
+      try { obj = JSON.parse(raw); }
+      catch (err) { st.textContent = '❌ JSON 解析失敗：' + err.message; return; }
+      if (!obj || !obj.title || !Array.isArray(obj.units)) {
+        st.textContent = '❌ 格式不符（需含 title 與 units 陣列）';
+        return;
+      }
+      var sm = quizSummary(obj);
+      st.textContent = '⏳ 上傳中…';
+      window.fbDb.collection(FL_COL_QUIZ).doc(QUIZ_DOC).set({
+        json: raw,
+        title: obj.title,
+        units: sm.units,
+        mcqCount: sm.mcq,
+        essayCount: sm.essay,
+        updatedBy: state.access.email,
+        updatedAt: ts()
+      }).then(function () {
+        st.textContent = '✅ 已匯入（' + sm.units + ' 單元 / ' +
+          sm.mcq + ' 選擇 / ' + sm.essay + ' 申論）';
+        fileEl.value = '';
+        loadQuizInfo();
+      }).catch(function (e) { st.textContent = '❌ ' + (e.code || e.message); });
+    };
+    reader.onerror = function () { st.textContent = '❌ 讀檔失敗'; };
+    reader.readAsText(f, 'utf-8');
+  };
+
+  window.flDownloadQuiz = function () {
+    var st = $('adm-quiz-status');
+    st.textContent = '⏳ 取得中…';
+    window.fbDb.collection(FL_COL_QUIZ).doc(QUIZ_DOC).get().then(function (s) {
+      if (!s.exists || !s.data().json) { st.textContent = '⚠️ 尚未匯入題庫'; return; }
+      var blob = new Blob([s.data().json], { type: 'application/json;charset=utf-8' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = '03_題庫.json';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(a.href); }, 500);
+      st.textContent = '✅ 已下載';
+    }).catch(function (e) { st.textContent = '❌ ' + (e.code || e.message); });
+  };
 
   /* ---------- 區塊 A：影片 ---------- */
   function buildVideos() {

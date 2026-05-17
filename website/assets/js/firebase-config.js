@@ -26,6 +26,7 @@ var FL_COL_VIDEOS = 'forest-law_videos';
 var FL_COL_ESSAYS = 'forest-law_essays';
 var FL_COL_TEACHERS = 'forest-law_teachers';
 var FL_COL_SETTINGS = 'forest-law_settings';
+var FL_COL_QUIZ = 'forest-law_quiz';
 
 // 由 YouTube 完整網址或裸 ID 取出 11 碼影片 ID;取不到回傳 null。
 window.flYouTubeId = function (input) {

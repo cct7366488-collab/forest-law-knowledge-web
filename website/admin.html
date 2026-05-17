@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>教師後臺 · 林業政策與法規知識網</title>
-<link rel="stylesheet" href="assets/css/main.css?v=20260517">
-<link rel="stylesheet" href="assets/css/admin.css?v=20260517">
+<link rel="stylesheet" href="assets/css/main.css?v=20260517b">
+<link rel="stylesheet" href="assets/css/admin.css?v=20260517b">
 </head>
 <body data-mode="student">
 
@@ -78,6 +78,19 @@
       <span id="adm-essay-status" class="adm-status"></span>
     </section>
 
+    <!-- 區塊 B2：完整題庫（教師專屬） -->
+    <section class="adm-card">
+      <h2>📚 完整題庫（教師專屬）</h2>
+      <p class="adm-muted">完整 100 選擇 + 30 申論（含解答、解析、申論要點）。<strong>僅授權教師可讀取</strong>，不在公開檔案。首次請上傳本機 <code>03_題庫.json</code> 匯入。</p>
+      <div id="adm-quiz-info" class="adm-quiz-info adm-muted">⏳ 載入中…</div>
+      <div class="adm-row" style="flex-wrap:wrap;gap:10px;">
+        <input type="file" id="adm-quiz-file" accept="application/json,.json">
+        <button class="adm-btn adm-btn-primary" onclick="flImportQuiz()">匯入 / 覆蓋題庫</button>
+        <button class="adm-btn adm-btn-ghost" onclick="flDownloadQuiz()">下載目前題庫</button>
+        <span id="adm-quiz-status" class="adm-status"></span>
+      </div>
+    </section>
+
     <!-- 區塊 C：教師白名單（僅 Owner 可見） -->
     <section id="adm-wl-card" class="adm-card" style="display:none">
       <h2>👥 教師白名單管理 <span class="adm-badge adm-badge-owner">Owner only</span></h2>
@@ -100,8 +113,8 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script src="assets/js/firebase-config.js?v=20260517"></script>
-<script src="assets/js/auth.js?v=20260517"></script>
-<script src="assets/js/admin.js?v=20260517"></script>
+<script src="assets/js/firebase-config.js?v=20260517b"></script>
+<script src="assets/js/auth.js?v=20260517b"></script>
+<script src="assets/js/admin.js?v=20260517b"></script>
 </body>
 </html>
