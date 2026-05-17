@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>單元 1:森林法制總論 | 林業政策與法規知識網</title>
-<link rel="stylesheet" href="assets/css/main.css?v=20260412h">
+<link rel="stylesheet" href="assets/css/main.css?v=20260517">
 <link rel="stylesheet" href="assets/css/pen.css">
 <script>window.UNIT_ID = 1;</script>
 </head>
@@ -256,12 +256,10 @@
         </div>
 
         <!-- 學生檢視模式提示(學生看到) -->
-        <div class="student-note">本頁由教師設定影片內容,學生僅能觀看。如需設定或更換影片,請切換至「🛠️ 教師模式」。</div>
+        <div class="student-note">本單元補充影片由授權教師於教師後臺統一設定,全體學生同步顯示。</div>
 
         <!-- 教師後臺管理(學生看不到、無法操作) -->
-        <div class="teacher-edit">
-          <div class="video-item"><span>補充影片:</span><input type="text" id="video-input-1" class="teacher-input" placeholder="YouTube URL..." oninput="setVideoUrl(1, this.value)"></div>
-        </div>
+        
 
         <!-- 播放器(學生也看得到) -->
         <div id="video-slot-1" style="margin:12px 0;">
@@ -344,15 +342,7 @@
         <div class="essay-question">
           <div class="question-text">申論 1. 為何《森林法》第 5 條將「國土保安長遠利益」列為林業管理的最高指導原則?請從歷史脈絡與實務意義兩方面闡述。</div>
           <textarea placeholder="請在此輸入你的答案..." style="width:100%;min-height:100px;padding:10px;border:1px solid #ccc;border-radius:4px;font-family:inherit;"></textarea>
-          <div class="essay-points">
-            <strong>💡 教師提供之參考要點:</strong>
-            <ul>
-              <li>民國 74 年大修時確立此原則,反映山地開發帶來之災害教訓</li>
-              <li>國土保安為公益性,優先於個別經濟利益</li>
-              <li>第 10 條限制採伐、第 22 條保安林編入等皆為此原則之具體展現</li>
-              <li>實務上當條文出現模糊地帶時,應優先以國土保安為解釋原則</li>
-            </ul>
-          </div>
+          <div class="fl-essay-slot"></div>
         </div>
       </div>
     </div>
@@ -395,6 +385,12 @@
   <p>林業政策與法規知識網 · v1.0 · 2026-04-11</p>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js?v=20260517"></script>
+<script src="assets/js/auth.js?v=20260517"></script>
+<script src="assets/js/unit-firebase.js?v=20260517"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/pen.js"></script>
 <script src="assets/js/notes.js?v=20260412h"></script>

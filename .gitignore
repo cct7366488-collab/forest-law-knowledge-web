@@ -21,3 +21,14 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+
+# 認證 / 金鑰（依 Cloud.md〔伍〕永不上傳；Firebase web config 非機密故不在此列）
+.env
+.env.*
+*credential*
+*secret*
+serviceAccountKey.json
+serviceAccount*.json
+*-firebase-adminsdk-*.json
+.firebase/
+firebase-debug.log

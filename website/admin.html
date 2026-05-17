@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>教師後臺 · 林業政策與法規知識網</title>
+<link rel="stylesheet" href="assets/css/main.css?v=20260517">
+<link rel="stylesheet" href="assets/css/admin.css?v=20260517">
+</head>
+<body data-mode="student">
+
+<header class="topbar">
+  <div class="topbar-left">
+    <h1 class="site-title">🛠️ 教師後臺</h1>
+    <span class="site-subtitle">林業政策與法規知識網 · 內容與權限管理</span>
+  </div>
+  <div class="topbar-right">
+    <a class="adm-link" href="index.html">← 回網站首頁</a>
+    <button id="adm-logout" class="adm-btn adm-btn-ghost" style="display:none" onclick="flAdminLogout()">登出</button>
+  </div>
+</header>
+
+<main class="adm-wrap">
+
+  <!-- 狀態：載入中 -->
+  <section id="adm-loading" class="adm-card">
+    <p class="adm-muted">⏳ 連線 Firebase 中…</p>
+  </section>
+
+  <!-- 狀態：未登入 -->
+  <section id="adm-login" class="adm-card" style="display:none">
+    <h2>教師登入</h2>
+    <p class="adm-muted">本後臺僅限授權教師。請以 Google 帳號登入；登入後系統會自動檢查授權白名單。</p>
+    <button class="adm-btn adm-btn-primary" onclick="flAdminLogin()">
+      <span class="adm-g">G</span> 以 Google 登入
+    </button>
+    <p id="adm-login-err" class="adm-err" style="display:none"></p>
+  </section>
+
+  <!-- 狀態：已登入但未授權 -->
+  <section id="adm-denied" class="adm-card" style="display:none">
+    <h2>⛔ 此帳號未授權</h2>
+    <p>登入身分：<strong id="adm-denied-email"></strong></p>
+    <p class="adm-muted">此 Google 帳號不在教師白名單內。如需授權，請聯絡系統管理者（Owner）將你的 Email 加入白名單。</p>
+    <button class="adm-btn adm-btn-ghost" onclick="flAdminLogout()">改用其他帳號登入</button>
+  </section>
+
+  <!-- 狀態：已授權 -->
+  <div id="adm-dash" style="display:none">
+
+    <div class="adm-card adm-whoami">
+      <div>
+        登入身分：<strong id="adm-email"></strong>
+        <span id="adm-role-badge" class="adm-badge"></span>
+      </div>
+    </div>
+
+    <!-- 區塊 A：補充影片管理 -->
+    <section class="adm-card">
+      <h2>📺 補充影片管理</h2>
+      <p class="adm-muted">設定各單元的 YouTube 影片，<strong>所有學生即時同步看到同一支影片</strong>。貼上完整 YouTube 網址或影片 ID 皆可；留白並儲存即移除。</p>
+      <div id="adm-videos" class="adm-rows"></div>
+    </section>
+
+    <!-- 區塊 B：申論參考要點管理 -->
+    <section class="adm-card">
+      <h2>📝 申論參考要點管理</h2>
+      <p class="adm-muted">此內容<strong>僅授權教師可讀取</strong>，學生端完全取不到（不在公開 HTML）。每行一個要點。</p>
+      <div class="adm-essay-pick">
+        <label>單元：
+          <select id="adm-essay-unit" onchange="flLoadEssays()"></select>
+        </label>
+        <button class="adm-btn adm-btn-ghost" onclick="flAddEssayBlock()">＋ 新增一則申論</button>
+      </div>
+      <div id="adm-essays" class="adm-rows"></div>
+      <button class="adm-btn adm-btn-primary" onclick="flSaveEssays()">儲存本單元申論要點</button>
+      <span id="adm-essay-status" class="adm-status"></span>
+    </section>
+
+    <!-- 區塊 C：教師白名單（僅 Owner 可見） -->
+    <section id="adm-wl-card" class="adm-card" style="display:none">
+      <h2>👥 教師白名單管理 <span class="adm-badge adm-badge-owner">Owner only</span></h2>
+      <p class="adm-muted">白名單內的教師可管理影片與申論要點。僅 Owner（你）可增刪。Owner 本身為信任根，不需也無法被列入/移除。</p>
+      <div class="adm-wl-add">
+        <input id="adm-wl-email" type="email" placeholder="teacher@example.com" autocomplete="off">
+        <button class="adm-btn adm-btn-primary" onclick="flAddTeacher()">新增教師</button>
+      </div>
+      <div id="adm-wl-list" class="adm-rows"></div>
+      <span id="adm-wl-status" class="adm-status"></span>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <p>教師後臺 · 林業政策與法規知識網 · 認證由 Firebase Auth 提供，授權由 Firestore Rules 強制</p>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js?v=20260517"></script>
+<script src="assets/js/auth.js?v=20260517"></script>
+<script src="assets/js/admin.js?v=20260517"></script>
+</body>
+</html>

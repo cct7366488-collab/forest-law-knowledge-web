@@ -77,6 +77,48 @@ python -m http.server 8000
 
 ---
 
+## 教師後臺與 Firebase（v2.0，2026-05-17）
+
+教師內容管理由 **Firebase Auth（Google 登入）+ Firestore** 提供，取代舊版寫死密碼。
+
+### 後臺入口
+
+- 網址：`/admin.html`（線上：https://cct7366488-collab.github.io/forest-law-knowledge-web/admin.html ）
+- 登入：以授權 Google 帳號點「以 Google 登入」。
+- 角色：
+  - **Owner**：`cct7366488@gmail.com`（信任根，硬編碼於 Firestore Rules）。可管理影片、申論要點、**教師白名單**。
+  - **教師**：在 `forest-law_teachers` 白名單內的帳號。可管理影片、申論要點（不可改白名單）。
+- 新增教師：Owner 於後臺「教師白名單管理」輸入對方 Google Email 即可，無需改程式或重部署。
+
+### 後臺功能
+
+| 功能 | 說明 | 學生端 |
+|------|------|--------|
+| 補充影片 | 各單元設定 YouTube；全體學生同步看到同一支 | 公開可讀 |
+| 申論參考要點 | 各單元申論題標準答案/評分要點 | **不可讀取**（不在公開 HTML，僅授權教師可取） |
+| 教師白名單 | Owner 增刪授權教師 | 不適用 |
+
+### 本地 → 雲端對應表（Cloud.md〔陸、四〕必備）
+
+寄宿共用專案 `forestry-teaching`（Spark 免費方案），以 `forest-law_` 前綴命名空間隔離。
+
+| 內容 | Firestore 路徑 | 讀 | 寫 |
+|------|---------------|----|----|
+| 補充影片 | `forest-law_videos/{unit-01..10}` | 公開 | 授權教師 |
+| 申論參考要點 | `forest-law_essays/{unit-01..10}` | 授權教師 | 授權教師 |
+| 站台設定 | `forest-law_settings/{doc}` | 公開 | 授權教師 |
+| 教師白名單 | `forest-law_teachers/{email}` | 已登入 | 僅 Owner |
+
+- Web config（`assets/js/firebase-config.js`）為用戶端公開識別碼，非機密；安全邊界由 Firestore Rules 強制。
+- Firestore Rules 權威部署來源：`C:\Users\cct\firebase-teaching-tools\firestore.rules`（共用專案，亦含投票工具）；本 repo `firebase/firestore.rules` 為版控副本。
+
+### 首次啟用須在 Firebase Console 完成
+
+1. Authentication → Sign-in method → 啟用 **Google** provider。
+2. Authentication → Settings → Authorized domains → 加入 `cct7366488-collab.github.io`、`localhost`。
+
+---
+
 ## 資料來源與致謝
 
 - **NotebookLM 筆記本**：森林經營管理相關法規（165 份 source，本站篩選 34 部森林核心法規）
