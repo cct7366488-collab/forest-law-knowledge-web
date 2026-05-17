@@ -130,14 +130,64 @@
         updatedBy: state.access.email,
         updatedAt: ts()
       }).then(function () {
-        st.textContent = '✅ 已匯入（' + sm.units + ' 單元 / ' +
-          sm.mcq + ' 選擇 / ' + sm.essay + ' 申論）';
+        st.textContent = '✅ 題庫已存，⏳ 產生學生練習題與申論要點…';
+        return deriveFromBank(obj);
+      }).then(function (n) {
+        st.textContent = '✅ 已匯入並產生（' + sm.units + ' 單元 / ' +
+          sm.mcq + ' 選擇 / ' + sm.essay + ' 申論;學生練習題已上線）';
         fileEl.value = '';
         loadQuizInfo();
       }).catch(function (e) { st.textContent = '❌ ' + (e.code || e.message); });
     };
     reader.onerror = function () { st.textContent = '❌ 讀檔失敗'; };
     reader.readAsText(f, 'utf-8');
+  };
+
+  // 由完整題庫衍生：公開練習題(forest-law_quiz_public/{unit})
+  // 與教師專屬申論要點(forest-law_essays/{unit})。批次寫入。
+  function deriveFromBank(obj) {
+    if (!obj || !Array.isArray(obj.units)) {
+      return Promise.reject(new Error('題庫格式不符'));
+    }
+    var batch = window.fbDb.batch();
+    obj.units.forEach(function (u) {
+      var uid = 'unit-' + String(u.unit).padStart(2, '0');
+      var mcq = Array.isArray(u.mcq) ? u.mcq.map(function (q) {
+        return { id: q.id, q: q.q, options: q.options, answer: q.answer, explain: q.explain || '' };
+      }) : [];
+      var essayQ = Array.isArray(u.essay) ? u.essay.map(function (e) {
+        return { id: e.id, q: e.q };
+      }) : [];
+      batch.set(window.fbDb.collection(FL_COL_QUIZ_PUBLIC).doc(uid), {
+        title: u.title || '', mcq: mcq, essay: essayQ,
+        updatedBy: state.access.email, updatedAt: ts()
+      });
+      var blocks = Array.isArray(u.essay) ? u.essay.map(function (e) {
+        return { heading: e.q, points: Array.isArray(e.points) ? e.points : [] };
+      }) : [];
+      batch.set(window.fbDb.collection(FL_COL_ESSAYS).doc(uid), {
+        blocks: blocks, updatedBy: state.access.email, updatedAt: ts()
+      });
+    });
+    return batch.commit().then(function () { return obj.units.length; });
+  }
+
+  window.flRegenDerived = function () {
+    var st = $('adm-quiz-status');
+    st.textContent = '⏳ 讀取題庫…';
+    window.fbDb.collection(FL_COL_QUIZ).doc(QUIZ_DOC).get().then(function (s) {
+      if (!s.exists || !s.data().json) {
+        st.textContent = '⚠️ 尚未匯入題庫,請先匯入';
+        return;
+      }
+      var obj;
+      try { obj = JSON.parse(s.data().json); }
+      catch (err) { st.textContent = '❌ 題庫資料毀損:' + err.message; return; }
+      st.textContent = '⏳ 產生學生練習題與申論要點…';
+      deriveFromBank(obj).then(function (n) {
+        st.textContent = '✅ 已產生/更新 ' + n + ' 單元的學生練習題;申論要點已同步至各單元';
+      }).catch(function (e) { st.textContent = '❌ ' + (e.code || e.message); });
+    }).catch(function (e) { st.textContent = '❌ ' + (e.code || e.message); });
   };
 
   window.flDownloadQuiz = function () {
