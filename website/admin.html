@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>教師後臺 · 林業政策與法規知識網</title>
-<link rel="stylesheet" href="assets/css/main.css?v=20260517d">
-<link rel="stylesheet" href="assets/css/admin.css?v=20260517d">
+<link rel="stylesheet" href="assets/css/main.css?v=20260518">
+<link rel="stylesheet" href="assets/css/admin.css?v=20260518">
 </head>
 <body data-mode="student">
 
@@ -89,6 +89,8 @@
         <button class="adm-btn adm-btn-ghost" onclick="flDownloadQuiz()">下載目前題庫</button>
         <span id="adm-quiz-status" class="adm-status"></span>
       </div>
+      <p class="adm-muted" style="margin-top:14px;">已匯入題庫後，按下方按鈕將題目「發佈」到各單元頁供學生作答（選擇題即時批改、含解析；申論題僅顯示題目，參考要點仍教師專屬）。匯入時會自動執行一次，已匯入者請手動按一次。</p>
+      <button class="adm-btn adm-btn-primary" onclick="flRegenDerived()">🔁 產生 / 更新各單元學生練習題</button>
     </section>
 
     <!-- 區塊 C：教師白名單（僅 Owner 可見） -->
@@ -113,8 +115,8 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-<script src="assets/js/firebase-config.js?v=20260517d"></script>
-<script src="assets/js/auth.js?v=20260517d"></script>
-<script src="assets/js/admin.js?v=20260517d"></script>
+<script src="assets/js/firebase-config.js?v=20260518"></script>
+<script src="assets/js/auth.js?v=20260518"></script>
+<script src="assets/js/admin.js?v=20260518"></script>
 </body>
 </html>

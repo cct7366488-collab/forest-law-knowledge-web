@@ -115,6 +115,13 @@ service cloud.firestore {
       allow write: if flIsTeacher();
     }
 
+    // 學生練習題（由完整題庫衍生，僅選擇題含解析 + 申論題目，不含申論參考要點）
+    // 公開讀（學生作答即時批改）；僅授權教師可寫（後臺自動衍生）
+    match /forest-law_quiz_public/{unitId} {
+      allow read: if true;
+      allow write: if flIsTeacher();
+    }
+
     // 教師白名單：登入者可讀（自我授權判定 / Owner 檢視全表）；
     // 僅 Owner 可增改刪（Owner 為信任根，不需也不應列入此集合）
     match /forest-law_teachers/{email} {
