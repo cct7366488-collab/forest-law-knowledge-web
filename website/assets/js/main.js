@@ -1,95 +1,33 @@
 /* ========================================
    林業政策與法規知識網 - 主邏輯
-   版本:v1.0 · 2026-04-11
+   版本:v2.0 · 2026-05-17
+   ----------------------------------------
+   v2.0 變更:
+   - 移除寫死教師密碼與 sessionStorage 軟性驗證(改由 Firebase Auth)。
+   - setMode 僅負責「視覺」切換;真正的教師授權由 Firebase Auth +
+     Firestore Rules 決定,並由 unit-firebase.js 驅動。
+   - 移除 localStorage 影片邏輯;補充影片改由 Firestore 集中供應
+     (見 unit-firebase.js)。
    ======================================== */
 
-// ========== 模式切換(學生/教師) ==========
-/*
- * 教師模式切換必須輸入「教師密碼」(預設:forest-teacher-2026)
- * 密碼僅為軟性保護,避免學生在公用電腦上誤觸。
- * 管理員可於 localStorage 設定 'forest-law-teacher-pwd' 覆蓋。
- */
-const TEACHER_PASSWORD_DEFAULT = 'forest-teacher-2026';
-
-function getTeacherPassword() {
-  return localStorage.getItem('forest-law-teacher-pwd') || TEACHER_PASSWORD_DEFAULT;
-}
-
-function isTeacherAuthenticated() {
-  return sessionStorage.getItem('forest-law-teacher-auth') === '1';
-}
-
+// ========== 模式切換(僅視覺;授權見 unit-firebase.js / Firebase) ==========
 function setMode(mode, opts) {
   opts = opts || {};
-  // 切換至教師模式必須通過密碼驗證(除非 silent=true 用於初始化還原)
-  if (mode === 'teacher' && !opts.silent && !isTeacherAuthenticated()) {
-    const input = window.prompt(
-      '🛠️ 切換至教師模式需輸入密碼:\n(學生請點「👩‍🎓 學生」即可正常閱讀)',
-      ''
-    );
-    if (input === null) {
-      // 使用者取消,退回原模式
-      const prev = document.body.dataset.mode || 'student';
-      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-      const prevBtn = document.getElementById('mode-' + prev);
-      if (prevBtn) prevBtn.classList.add('active');
-      return;
-    }
-    if (input !== getTeacherPassword()) {
-      showToast('❌ 密碼錯誤,已保留學生模式');
-      // 退回學生模式
-      setMode('student', { silent: true });
-      return;
-    }
-    sessionStorage.setItem('forest-law-teacher-auth', '1');
-  }
-
-  if (mode === 'student') {
-    // 登出教師模式:清除 session 驗證
-    sessionStorage.removeItem('forest-law-teacher-auth');
-  }
-
   document.body.dataset.mode = mode;
-  localStorage.setItem('forest-law-mode', mode);
 
-  // 更新按鈕狀態
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   const targetBtn = document.getElementById('mode-' + mode);
   if (targetBtn) targetBtn.classList.add('active');
 
-  // 顯示提示
   if (!opts.silent) {
-    const label =
-      mode === 'teacher'
-        ? '🛠️ 已切換至教師模式 — 可編輯影片/備註/題庫'
-        : '👩‍🎓 已切換至學生模式 — 唯讀';
-    showToast(label);
+    showToast(mode === 'teacher' ? '🛠️ 教師檢視' : '👩‍🎓 學生檢視');
   }
 }
 
-/**
- * 保護:學生模式下禁止執行需要教師權限的動作
- * 在任何「寫入操作」前呼叫:若為學生模式,阻擋並提示
- */
-function requireTeacherMode(actionLabel) {
-  if (document.body.dataset.mode !== 'teacher') {
-    showToast('🔒 ' + (actionLabel || '此操作') + '需要教師模式');
-    return false;
-  }
-  return true;
-}
-
-// 還原上次模式
 window.addEventListener('DOMContentLoaded', () => {
-  // 重要:頁面載入時不跳密碼框,一律以「已儲存的身份」還原。
-  // 若儲存為 teacher 但 sessionStorage 未驗證(例如關掉瀏覽器重開),
-  // 則降級為 student 模式以確保預設為唯讀狀態。
-  let savedMode = localStorage.getItem('forest-law-mode') || 'student';
-  if (savedMode === 'teacher' && !isTeacherAuthenticated()) {
-    savedMode = 'student';
-    localStorage.setItem('forest-law-mode', 'student');
-  }
-  setMode(savedMode, { silent: true });
+  // 預設一律學生(唯讀);若為授權教師,unit-firebase.js 會在
+  // Firebase 驗證後自動切換為教師檢視。
+  setMode('student', { silent: true });
 
   // 標記當前單元
   const path = location.pathname.split('/').pop();
@@ -99,7 +37,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 載入進度
   renderProgress();
 });
 
@@ -145,7 +82,6 @@ function searchContent(keyword) {
 
   if (!keyword || keyword.length < 2) return;
 
-  // 搜尋單元卡片與導覽
   const matches = [];
   document.querySelectorAll('.unit-card, .unit-link').forEach(el => {
     if (el.textContent.includes(keyword)) {
@@ -158,7 +94,6 @@ function searchContent(keyword) {
     }
   });
 
-  // 搜尋頁面內文(若在單元頁)
   const body = document.querySelector('.lecture-body');
   if (body) {
     const regex = new RegExp(keyword, 'gi');
@@ -200,7 +135,6 @@ function switchTab(tabName) {
   document.getElementById('tab-btn-' + tabName).classList.add('active');
   document.getElementById('tab-content-' + tabName).classList.add('active');
 
-  // 切到簡報分頁時,觸發 PDF.js 重新依容器寬度渲染
   if (tabName === 'slide' && typeof window.slideViewerRelayout === 'function') {
     window.slideViewerRelayout();
   }
@@ -221,7 +155,6 @@ function answerQuestion(questionId, optionIndex, correctAnswer) {
     if (i === optionIndex && i !== correctIndex) opt.classList.add('wrong');
   });
 
-  // 記錄答題結果
   saveQuizResult(questionId, optionIndex === correctIndex);
   updateQuizSummary();
 }
@@ -243,8 +176,6 @@ function updateQuizSummary() {
     const rate = total > 0 ? Math.round(correct / total * 100) : 0;
     summary.innerHTML = `📊 已完成 ${total} / 10 題 · 答對 ${correct} 題 · 正確率 ${rate}%`;
   }
-
-  // 更新進度
   renderProgress();
 }
 
@@ -271,63 +202,3 @@ function renderProgress() {
     </div>
   `).join('');
 }
-
-// ========== YouTube 嵌入處理 ==========
-/**
- * 設定 YouTube 影片(寫入 localStorage 與 iframe)
- * - 學生模式下禁止寫入(只能讀取已存在的影片)
- * - 內部參數 _fromRestore=true 代表是啟動時還原,不做教師檢查
- */
-function setVideoUrl(slot, url, _fromRestore) {
-  // 還原以外的「手動輸入」需要教師權限
-  if (!_fromRestore && !requireTeacherMode('編輯影片網址')) {
-    // 回復 input 顯示上次儲存值
-    const inputEl = document.getElementById('video-input-' + slot);
-    const key = 'forest-law-video-' + (window.UNIT_ID || 'x') + '-' + slot;
-    if (inputEl) inputEl.value = localStorage.getItem(key) || '';
-    return;
-  }
-
-  const container = document.getElementById('video-slot-' + slot);
-  if (!container) return;
-
-  // 支援完整 URL 或 video ID
-  let videoId = (url || '').trim();
-  const match = videoId.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/);
-  if (match) videoId = match[1];
-
-  if (!videoId) {
-    container.innerHTML = '<div class="video-placeholder">(尚未設定影片)</div>';
-    return;
-  }
-
-  container.innerHTML = `
-    <iframe class="video-iframe"
-      src="https://www.youtube.com/embed/${videoId}"
-      title="教學影片"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-      allowfullscreen></iframe>
-  `;
-
-  // 儲存(還原時不重寫)
-  if (!_fromRestore) {
-    const key = 'forest-law-video-' + (window.UNIT_ID || 'x') + '-' + slot;
-    localStorage.setItem(key, videoId);
-  }
-}
-
-// 還原 YouTube 影片(啟動時呼叫,不受模式保護)
-function restoreVideos() {
-  if (!window.UNIT_ID) return;
-  for (let i = 1; i <= 3; i++) {
-    const key = 'forest-law-video-' + window.UNIT_ID + '-' + i;
-    const saved = localStorage.getItem(key);
-    const input = document.getElementById('video-input-' + i);
-    if (saved) {
-      if (input) input.value = saved;
-      setVideoUrl(i, saved, true /* _fromRestore */);
-    }
-  }
-}
-
-window.addEventListener('DOMContentLoaded', restoreVideos);

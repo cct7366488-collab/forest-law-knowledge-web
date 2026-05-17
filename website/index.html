@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>林業政策與法規知識網</title>
-<link rel="stylesheet" href="assets/css/main.css?v=20260412h">
+<link rel="stylesheet" href="assets/css/main.css?v=20260517c">
 <link rel="stylesheet" href="assets/css/pen.css">
 </head>
 <body data-mode="student">
@@ -18,11 +18,7 @@
     <span class="site-subtitle">基於 NotebookLM「森林經營管理相關法規」之互動式教材</span>
   </div>
   <div class="topbar-right">
-    <div class="mode-switch">
-      <span class="mode-label">模式</span>
-      <button id="mode-student" class="mode-btn active" onclick="setMode('student')">👩‍🎓 學生</button>
-      <button id="mode-teacher" class="mode-btn" onclick="setMode('teacher')">👨‍🏫 教師</button>
-    </div>
+    <a class="pen-toggle" href="admin.html" style="text-decoration:none;" title="教師後臺(需 Google 授權登入)">🛠️ 教師後臺</a>
     <button class="pen-toggle" onclick="togglePen()">✏️ 畫筆</button>
   </div>
 </header>
@@ -63,7 +59,7 @@
       <h2>🌲 歡迎來到林業政策與法規知識網</h2>
       <p class="hero-desc">
         本站整合大學林業科系<strong>講義</strong>、正式<strong>課本文章</strong>、
-        NotebookLM 產生之<strong>簡報投影片</strong>、<strong>130 題互動題庫</strong>、
+        NotebookLM 產生之<strong>簡報投影片</strong>、<strong>單元互動測驗</strong>、
         以及<strong>科普文章</strong>,適合自學、備課、證照考試使用。
       </p>
 
@@ -144,7 +140,7 @@
           <div class="feature-card">
             <div class="feat-icon">✅</div>
             <h4>互動題庫</h4>
-            <p>100 選擇題即時批改 + 30 申論題要點</p>
+            <p>單元內嵌選擇題即時批改;完整題庫與申論要點為教師專屬</p>
           </div>
           <div class="feature-card">
             <div class="feat-icon">📺</div>
@@ -157,9 +153,9 @@
             <p>任何頁面都可畫線、畫圈、標記重點</p>
           </div>
           <div class="feature-card">
-            <div class="feat-icon">👩‍🏫</div>
-            <h4>學生/教師切換</h4>
-            <p>教師模式可看解析與備課提示</p>
+            <div class="feat-icon">🛠️</div>
+            <h4>教師後臺</h4>
+            <p>Google 授權登入,管理影片、題庫與申論要點</p>
           </div>
           <div class="feature-card">
             <div class="feat-icon">📖</div>

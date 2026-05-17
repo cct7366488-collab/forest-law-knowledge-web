@@ -1,0 +1,132 @@
+rules_version = '2';
+
+// ============================================================
+// Firestore 安全規則 - 加固版白名單(共用專案 forestry-teaching)
+// 建立日期：2026-04-24（wordcloud/polls/votes）
+// 更新日期：2026-05-17（新增 forest-law_* 命名空間，林業政策與法規知識網）
+// 作者：陳朝圳（透過 Claude Code 協助建立）
+//
+// ★ 權威部署來源為 C:\Users\cct\firebase-teaching-tools\firestore.rules
+//   （該專案為共用，亦含投票工具）。本檔為林業政策與法規知識網 repo
+//   內的「版本控管副本」，內容須與權威來源一致；修改後由 owner 從
+//   teaching-tools 目錄執行 firebase deploy。
+//
+// 設計原則：
+// 1. 白名單（未列出的集合一律禁止）
+// 2. 最小權限（僅開放必要動作）
+// 3. 欄位與長度限制（防止資料注入與配額耗盡）
+// 4. update/delete 預設禁止（資料不可被學生端竄改）
+// ============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ----------------------------------------------------------
+    // 集合：即時文字雲（wordcloud_words）
+    // 用途：學生端提交關鍵字，公開展示頁即時更新
+    // ----------------------------------------------------------
+    match /wordcloud_words/{document} {
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.keys().hasOnly(['word', 'created_at'])
+        && request.resource.data.word is string
+        && request.resource.data.word.size() > 0
+        && request.resource.data.word.size() < 50
+        && request.resource.data.created_at is timestamp;
+
+      allow update, delete: if false;
+    }
+
+    // ----------------------------------------------------------
+    // 集合：投票題目（polls）
+    // 用途：老師透過 Firebase MCP 建立投票題目；學生端、展示頁僅讀取
+    // 寫入一律禁止（由管理者經 Admin SDK 建立，繞過規則）
+    // ----------------------------------------------------------
+    match /polls/{pollId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ----------------------------------------------------------
+    // 集合：投票紀錄（votes）
+    // 用途：學生端寫入一筆投票；展示頁即時統計
+    // 限 create、欄位與範圍驗證；禁止改／刪
+    // ----------------------------------------------------------
+    match /votes/{voteId} {
+      allow read: if true;
+
+      allow create: if
+        request.resource.data.keys().hasOnly(['poll_id', 'option_index', 'created_at'])
+        && request.resource.data.poll_id is string
+        && request.resource.data.poll_id.size() > 0
+        && request.resource.data.poll_id.size() < 60
+        && request.resource.data.option_index is int
+        && request.resource.data.option_index >= 0
+        && request.resource.data.option_index < 10
+        && request.resource.data.created_at is timestamp;
+
+      allow update, delete: if false;
+    }
+
+    // ==========================================================
+    // 林業政策與法規知識網（forest-law_* 命名空間）
+    // 新增日期：2026-05-17
+    // 認證：Firebase Auth（Google，email 須已驗證）
+    // 授權：Owner 硬編碼信任根 + forest-law_teachers 白名單文件
+    // 對上方 wordcloud/polls/votes 規則零影響（僅新增 match 區塊）
+    // ==========================================================
+    function flSignedIn() {
+      return request.auth != null
+        && request.auth.token.email_verified == true;
+    }
+    function flIsOwner() {
+      return flSignedIn()
+        && request.auth.token.email == 'cct7366488@gmail.com';
+    }
+    function flIsTeacher() {
+      return flSignedIn() && (
+        flIsOwner()
+        || exists(/databases/$(database)/documents/forest-law_teachers/$(request.auth.token.email))
+      );
+    }
+
+    // 補充影片：公開讀（全體學生同步觀看）；授權教師可寫
+    match /forest-law_videos/{unitId} {
+      allow read: if true;
+      allow write: if flIsTeacher();
+    }
+
+    // 申論參考要點：僅授權教師可讀寫（學生端取不到 → 內容保護）
+    match /forest-law_essays/{unitId} {
+      allow read: if flIsTeacher();
+      allow write: if flIsTeacher();
+    }
+
+    // 站台設定（保留擴充）：公開讀；授權教師可寫
+    match /forest-law_settings/{docId} {
+      allow read: if true;
+      allow write: if flIsTeacher();
+    }
+
+    // 完整題庫（含解答/解析/申論要點）：僅授權教師可讀寫（內容保護）
+    match /forest-law_quiz/{docId} {
+      allow read: if flIsTeacher();
+      allow write: if flIsTeacher();
+    }
+
+    // 教師白名單：登入者可讀（自我授權判定 / Owner 檢視全表）；
+    // 僅 Owner 可增改刪（Owner 為信任根，不需也不應列入此集合）
+    match /forest-law_teachers/{email} {
+      allow read: if flSignedIn();
+      allow create, update, delete: if flIsOwner();
+    }
+
+    // ----------------------------------------------------------
+    // 預設拒絕：未列出的集合一律禁止讀寫
+    // ----------------------------------------------------------
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

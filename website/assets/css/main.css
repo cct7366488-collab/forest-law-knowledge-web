@@ -1181,6 +1181,23 @@ body[data-mode="student"] .essay-points {
   display: none;
 }
 
+/* ---- Firebase 動態注入的申論參考要點(僅授權教師可取得內容)---- */
+/* 不綁 data-mode:此區塊只有在 Firebase 驗證為授權教師時才會被 JS 填入 */
+.fl-essay-slot:empty { display: none; }
+.fl-essay-points {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, rgba(233, 196, 106, 0.14), rgba(30, 58, 47, 0.05));
+  border: 1px dashed #d4a841;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #1e3a2f;
+}
+.fl-essay-points ul { padding-left: 20px; margin: 8px 0 0; }
+.fl-essay-points .fl-essay-h {
+  margin: 6px 0; font-weight: 600; color: #8a5a10;
+}
+
 .quiz-summary {
   background: var(--forest-light);
   padding: 16px 20px;

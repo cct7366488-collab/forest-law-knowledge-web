@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>單元 6:林下經濟 | 林業政策與法規知識網</title>
-<link rel="stylesheet" href="assets/css/main.css?v=20260412h"><link rel="stylesheet" href="assets/css/pen.css">
+<link rel="stylesheet" href="assets/css/main.css?v=20260517c"><link rel="stylesheet" href="assets/css/pen.css">
 <script>window.UNIT_ID = 6;</script></head>
 <body data-mode="student">
 <header class="topbar">
@@ -210,7 +210,7 @@
       <p>這套審查與退場機制,目的是確保林下經濟不淪為「另一種山坡地超限利用」。嚴格的抽查與不寬貸的廢止,是林下經濟能維持生態底線的關鍵。</p>
     </div>
     <div id="tab-content-slide" class="tab-content"><div class="slide-section"><h3>📊 單元 6 教學簡報 — 林下經濟</h3><div class="slide-status slide-ready">✅ 簡報已由 NotebookLM 產製完成 — 可在下方直接翻頁播放</div><div class="slide-viewer"><div class="slide-viewer-stage"><canvas id="slide-canvas"></canvas><div id="slide-loading" class="slide-loading">📥 載入簡報中...</div></div><div class="slide-toolbar"><div class="slide-toolbar-nav"><button id="slide-btn-first" class="slide-nav-btn icon-only" title="第一頁">⏮</button><button id="slide-btn-prev" class="slide-nav-btn" title="上一頁">◀ 上一頁</button></div><div class="slide-pager"><span id="slide-page-cur">1</span> / <span id="slide-page-total">—</span></div><div class="slide-toolbar-nav"><button id="slide-btn-next" class="slide-nav-btn" title="下一頁">下一頁 ▶</button><button id="slide-btn-last" class="slide-nav-btn icon-only" title="最後一頁">⏭</button></div></div><div class="slide-shortcut-hint">快捷鍵:<kbd>←</kbd> <kbd>→</kbd> <kbd>Space</kbd> <kbd>Home</kbd> <kbd>End</kbd></div></div><div class="slide-card" style="margin-top:16px;"><div class="slide-card-icon">📥</div><div class="slide-card-info"><div class="slide-card-title">離線版本下載</div><div class="slide-card-meta">黑板粉筆風格 · 9 項品項 · 預留 YouTube 版位</div></div><a href="assets/slides/unit-06.pptx" download class="slide-download-btn">⬇️ PPTX</a><a href="assets/slides/unit-06.pdf" download class="slide-download-btn" style="margin-left:8px;">⬇️ PDF</a></div></div></div>
-    <div id="tab-content-video" class="tab-content"><div class="video-section"><h3>📺 教學影片</h3><div style="margin:16px 0 24px;"><h4 style="color:#2d5016;margin:0 0 8px;">🎬 林下經濟：森林裡的永續寶藏</h4><video controls width="100%" style="max-width:720px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);"><source src="assets/videos/unit-06.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video></div><div class="student-note">本頁由教師設定影片內容,學生僅能觀看。如需設定或更換影片,請切換至「🛠️ 教師模式」。</div><div class="teacher-edit"><div class="video-item"><span>影片 1:</span><input type="text" id="video-input-1" class="teacher-input" placeholder="YouTube URL..." oninput="setVideoUrl(1, this.value)"></div></div><div id="video-slot-1" style="margin:12px 0;"><div class="video-placeholder">尚未設定影片</div></div></div></div>
+    <div id="tab-content-video" class="tab-content"><div class="video-section"><h3>📺 教學影片</h3><div style="margin:16px 0 24px;"><h4 style="color:#2d5016;margin:0 0 8px;">🎬 林下經濟：森林裡的永續寶藏</h4><video controls width="100%" style="max-width:720px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.15);"><source src="assets/videos/unit-06.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video></div><div class="student-note">本單元補充影片由授權教師於教師後臺統一設定,全體學生同步顯示。</div><div id="video-slot-1" style="margin:12px 0;"><div class="video-placeholder">尚未設定影片</div></div></div></div>
     <div id="tab-content-quiz" class="tab-content">
       <div class="quiz-section">
         <h3>✅ 單元 6 練習題</h3>
@@ -245,7 +245,7 @@
           <li onclick="answerQuestion('q-u6q5',2,'C')">C. 3 個月</li>
           <li onclick="answerQuestion('q-u6q5',3,'C')">D. 6 個月</li>
         </ul><div class="question-explain">💡 最長 3 個月,並以 1 次為限。</div></div>
-        <p style="color:#666;margin-top:16px;font-size:13px;">⏳ 完整題庫請見 <a href="assets/resources/03_題庫.json" target="_blank">題庫 JSON</a>。</p>
+        <p style="color:#666;margin-top:16px;font-size:13px;">⏳ 完整題庫(含解答、解析與申論要點)為教師專屬,請至 <a href="admin.html">教師後臺</a> 以授權帳號登入後於「完整題庫」區取得。</p>
       </div>
     </div>
   </main>
@@ -266,6 +266,12 @@
   <button onclick="clearCanvas()">🗑️</button><button onclick="togglePen()">❌</button>
 </div>
 <footer class="footer"><p>林業政策與法規知識網 · v1.0 · 2026-04-11</p></footer>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js?v=20260517c"></script>
+<script src="assets/js/auth.js?v=20260517c"></script>
+<script src="assets/js/unit-firebase.js?v=20260517c"></script>
 <script src="assets/js/main.js"></script><script src="assets/js/pen.js"></script><script src="assets/js/notes.js?v=20260412h"></script>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script><script src="assets/js/slides.js?v=20260412"></script>
 </body></html>

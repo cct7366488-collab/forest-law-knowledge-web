@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>單元 3:保安林制度 | 林業政策與法規知識網</title>
-<link rel="stylesheet" href="assets/css/main.css?v=20260412h"><link rel="stylesheet" href="assets/css/pen.css">
+<link rel="stylesheet" href="assets/css/main.css?v=20260517c"><link rel="stylesheet" href="assets/css/pen.css">
 <script>window.UNIT_ID = 3;</script>
 </head>
 <body data-mode="student">
@@ -273,10 +273,8 @@
             您的瀏覽器不支援影片播放。
           </video>
         </div>
-        <div class="student-note">本頁由教師設定影片內容,學生僅能觀看。如需設定或更換影片,請切換至「🛠️ 教師模式」。</div>
-        <div class="teacher-edit">
-          <div class="video-item"><span>補充影片:</span><input type="text" id="video-input-1" class="teacher-input" placeholder="YouTube URL..." oninput="setVideoUrl(1, this.value)"></div>
-        </div>
+        <div class="student-note">本單元補充影片由授權教師於教師後臺統一設定,全體學生同步顯示。</div>
+        
         <div id="video-slot-1" style="margin:12px 0;"><div class="video-placeholder">尚未設定影片</div></div>
       </div>
     </div>
@@ -341,7 +339,7 @@
           <div class="question-explain">💡 紅檜、扁柏伐期齡 150 年,為所有樹種中最長。</div>
         </div>
 
-        <p style="color:#666;margin-top:16px;font-size:13px;">⏳ 更多題目請參閱 <a href="assets/resources/03_題庫.json" target="_blank">完整題庫 JSON</a>。</p>
+        <p style="color:#666;margin-top:16px;font-size:13px;">⏳ 完整題庫(含解答、解析與申論要點)為教師專屬,請至 <a href="admin.html">教師後臺</a> 以授權帳號登入後於「完整題庫」區取得。</p>
       </div>
     </div>
   </main>
@@ -368,6 +366,12 @@
 </div>
 
 <footer class="footer"><p>林業政策與法規知識網 · v1.0 · 2026-04-11</p></footer>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="assets/js/firebase-config.js?v=20260517c"></script>
+<script src="assets/js/auth.js?v=20260517c"></script>
+<script src="assets/js/unit-firebase.js?v=20260517c"></script>
 <script src="assets/js/main.js"></script><script src="assets/js/pen.js"></script><script src="assets/js/notes.js?v=20260412h"></script>
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script><script src="assets/js/slides.js?v=20260412"></script>
 </body>
