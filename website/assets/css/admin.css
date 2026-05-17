@@ -4,7 +4,8 @@
 
 .adm-wrap {
   max-width: 920px;
-  margin: 24px auto 60px;
+  /* 頂列為 position:fixed(高 var(--topbar-height)),需下推避免第一張卡被蓋住 */
+  margin: calc(var(--topbar-height, 60px) + 24px) auto 60px;
   padding: 0 18px;
 }
 
