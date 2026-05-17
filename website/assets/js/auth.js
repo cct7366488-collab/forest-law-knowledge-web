@@ -51,11 +51,13 @@
     var access = { authed: false, email: null, owner: false, teacher: false };
     if (!user || !user.email) return Promise.resolve(access);
 
+    // 白名單以小寫 email 為鍵(與 admin.js 寫入一致),避免大小寫不一致漏判
+    var email = String(user.email).toLowerCase();
     access.authed = true;
-    access.email = user.email;
+    access.email = email;
 
     var verified = user.emailVerified === true;
-    if (verified && user.email === FOREST_LAW_OWNER_EMAIL) {
+    if (verified && email === String(FOREST_LAW_OWNER_EMAIL).toLowerCase()) {
       access.owner = true;
       access.teacher = true;
       return Promise.resolve(access);
@@ -64,7 +66,7 @@
 
     return window.fbDb
       .collection(FL_COL_TEACHERS)
-      .doc(user.email)
+      .doc(email)
       .get()
       .then(function (snap) {
         if (snap.exists) access.teacher = true;
